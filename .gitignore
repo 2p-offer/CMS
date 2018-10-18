@@ -1,0 +1,12 @@
+.gradle
+.idea
+.vscode
+helium.pid
+build
+/config
+/felix-cache
+gradle
+*.iml
+gradlew
+gradlew.bat
+*.~vsd

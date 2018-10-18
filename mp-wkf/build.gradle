@@ -1,0 +1,8 @@
+dependencies {
+    compile project(':mp-common')
+    compile (group: 'com.feinno', name: 'data-service-wkf', version: data_version) {
+        exclude group: 'org.helium', module: 'helium-logging'
+        exclude group: 'tomcat', module: 'jasper-compiler'
+        exclude group: 'tomcat', module: 'jasper-runtime'
+    }
+}

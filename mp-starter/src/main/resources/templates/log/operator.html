@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header">
+
+</head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content animated fadeInRight">
+		<div class="col-sm-12">
+			<div class="ibox">
+
+				<div class="ibox-body">
+					<div class="fixed-table-toolbar">
+						<div class="pull-left search col-md-2">
+							<input id="startTimeSearch" type="text" class="form-control"
+								   placeholder="开始时间">
+						</div>
+						<div class="pull-left search col-md-2 nopadding">
+							<input id="endTimeSearch" type="text" class="form-control"
+								   placeholder="结束时间">
+						</div>
+
+						<div class="pull-left search col-md-2 nopadding">
+							<input id="operationSearch" type="text" class="form-control"
+								   placeholder="操作">
+						</div>
+                        <div class="columns pull-left" role="group">
+                            <button class="btn btn-success" onclick="reLoad()">
+                                <i class="fa fa-search" aria-hidden="true"></i>查询
+                            </button>
+                        </div>
+                        <table id="logOperatorTable" data-mobile-responsive="true">
+                        </table>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:include="include :: footer"></div>
+	<script type="text/javascript" src="/js/log/operator.js"></script>
+	<link href="/layui/css/layui.css" rel="stylesheet">
+	<script src="/layui/layui.js"></script>
+	<script type="text/javascript">
+        layui.use('laydate', function() {
+            var laydate = layui.laydate;
+            //日期时间选择器
+            laydate.render({
+                elem: '#startTimeSearch'
+                ,type: 'datetime'
+            });
+            laydate.render({
+                elem: '#endTimeSearch'
+                ,type: 'datetime'
+            });
+        });
+
+	</script>
+</body>
+</html>
