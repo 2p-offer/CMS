@@ -55,7 +55,6 @@ public class RoleController extends BaseController {
 
 		model.addAttribute("isSystem",ShiroUtils.getUser().isSystem());
 		model.addAttribute("role", roleDO);
-		model.addAttribute("currentRoleLevel", roleDO.getLevel());
 		return prefix + "/edit";
 	}
 
@@ -64,28 +63,7 @@ public class RoleController extends BaseController {
 	@PostMapping("/save")
 	@ResponseBody()
 	R save(RoleDO role) {
-		if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
-			return R.error(1, "演示系统不允许修改,完整体验请部署程序");
-		}
-		//添加角色的level
-		//1.超管会选择添加角色的等级
-		//2.企业管理只能添加等级为3的角色
-		//3.普通管理不能添加角色
 
-		if(!ShiroUtils.getUser().isSystem()){
-			role.setLevel(2L);
-			role.setCompanyId(ShiroUtils.getUser().getCompanyId());
-		}else{
-			switch (role.getLevel().toString()){
-				case "0":
-					role.setCompanyId(0L);
-					break;
-				case "1":
-//					role.setCompanyId(ShiroUtils.getUser().getCompanyId());
-					//TODO 超级管理员输入企业名称之后，暂时无法获得companyId，先放在这123
-					role.setCompanyId(123L);
-			}
-		}
 		if (roleService.save(role) > 0) {
 			return R.ok();
 		} else {
@@ -98,12 +76,7 @@ public class RoleController extends BaseController {
 	@PostMapping("/update")
 	@ResponseBody()
 	R update(RoleDO role,Long currentRoleLevel) {
-		if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
-			return R.error(1, "演示系统不允许修改,完整体验请部署程序");
-		}
-		if(currentRoleLevel.longValue()==roleService.get(ShiroUtils.getUser().getRoleIds().get(0)).getLevel().longValue()){
-			return  R.error(1, "不可编辑同级别角色");
-		}
+
 		if (roleService.update(role) > 0) {
 			return R.ok();
 		} else {
@@ -116,9 +89,7 @@ public class RoleController extends BaseController {
 	@PostMapping("/remove")
 	@ResponseBody()
 	R save(Long id) {
-		if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
-			return R.error(1, "演示系统不允许修改,完整体验请部署程序");
-		}
+
 		if (roleService.remove(id) > 0) {
 			return R.ok();
 		} else {
@@ -131,9 +102,7 @@ public class RoleController extends BaseController {
 	@PostMapping("/batchRemove")
 	@ResponseBody
 	R batchRemove(@RequestParam("ids[]") Long[] ids) {
-		if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
-			return R.error(1, "演示系统不允许修改,完整体验请部署程序");
-		}
+
 		int r = roleService.batchremove(ids);
 		if (r > 0) {
 			return R.ok();

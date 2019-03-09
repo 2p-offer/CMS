@@ -1,11 +1,9 @@
 var prefix = "/sys/user"
 $(function() {
-	var deptId = '';
-	getTreeData();
-	load(deptId);
+	load();
 });
 
-function load(deptId) {
+function load() {
 	$('#exampleTable')
 		.bootstrapTable(
 			{
@@ -35,8 +33,7 @@ function load(deptId) {
 						// 说明：传入后台的参数包括offset开始索引，limit步长，sort排序列，order：desc或者,以及所有列的键值对
 						limit : params.limit,
 						offset : params.offset,
-						name : $('#searchName').val(),
-						deptId : deptId
+						name : $('#searchName').val()
 					};
 				},
 				// //请求服务器数据时，你可以通过重写参数的方式添加一些额外的参数，例如 toolbar 中的参数 如果
@@ -183,39 +180,3 @@ function batchRemove() {
 		});
 	}, function() {});
 }
-function getTreeData() {
-	$.ajax({
-		type : "GET",
-		url : "/system/sysDept/tree",
-		success : function(tree) {
-			loadTree(tree);
-		}
-	});
-}
-function loadTree(tree) {
-	$('#jstree').jstree({
-		'core' : {
-			'data' : tree
-		},
-		"plugins" : [ "search" ]
-	});
-	$('#jstree').jstree().open_all();
-}
-$('#jstree').on("changed.jstree", function(e, data) {
-	if (data.selected == -1) {
-		var opt = {
-			query : {
-				deptId : '',
-			}
-		}
-		$('#exampleTable').bootstrapTable('refresh', opt);
-	} else {
-		var opt = {
-			query : {
-				deptId : data.selected[0],
-			}
-		}
-		$('#exampleTable').bootstrapTable('refresh',opt);
-	}
-
-});

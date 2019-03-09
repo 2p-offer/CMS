@@ -46,7 +46,6 @@ function update() {
 	$('#menuIds').val(menuIds);
 	var role = $('#signupForm').serialize();
 	var currentRoleLevel = $('#signupForm').serialize();
-	alert(role);
 	$.ajax({
 		cache : true,
 		type : "POST",

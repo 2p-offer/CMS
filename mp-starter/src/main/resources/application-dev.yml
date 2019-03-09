@@ -15,7 +15,7 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://10.10.220.92:3306/URCS_MP_WKF?useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://127.0.0.1:3306/CMS_WY?useUnicode=true&characterEncoding=utf8
     username: root
     password: mysql
     initialSize: 1

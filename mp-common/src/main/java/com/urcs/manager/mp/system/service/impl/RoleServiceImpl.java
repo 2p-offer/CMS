@@ -36,14 +36,14 @@ public class RoleServiceImpl implements RoleService {
     public List<RoleDO> list() {
         //添加权限管理
         UserDO user = ShiroUtils.getUser();
-        Long companyId=user.getCompanyId();
-        Map<String, Object> params =new HashMap<>(16);
-        if(companyId!=0){
-            params.put("companyId",companyId);
-//            Long rid = userRoleMapper.listRoleId(user.getUserId()).get(0);
-//            roleMapper.get(rid).getLevel();
-            params.put("level","1");
-        }
+        Long companyId = user.getCompanyId();
+        Map<String, Object> params = new HashMap<>(16);
+//        if(companyId!=0){
+//            params.put("companyId",companyId);
+////            Long rid = userRoleMapper.listRoleId(user.getUserId()).get(0);
+////            roleMapper.get(rid).getLevel();
+//            params.put("level","1");
+//        }
         List<RoleDO> roles = roleMapper.list(params);
         return roles;
     }
@@ -52,15 +52,15 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public List<RoleDO> list(Long userId) {
         List<Long> rolesIds = userRoleMapper.listRoleId(userId);
-        UserDO user = ShiroUtils.getUser();
-        Long companyId=user.getCompanyId();
-        Map<String, Object> params =new HashMap<>(16);
-        if(companyId!=0){
-            params.put("companyId",companyId);
-//            Long rid = userRoleMapper.listRoleId(user.getUserId()).get(0);
-//            roleMapper.get(rid).getLevel();
-            params.put("level","1");
-        }
+//        UserDO user = ShiroUtils.getUser();
+//        Long companyId=user.getCompanyId();
+        Map<String, Object> params = new HashMap<>(16);
+//        if(companyId!=0){
+//            params.put("companyId",companyId);
+////            Long rid = userRoleMapper.listRoleId(user.getUserId()).get(0);
+////            roleMapper.get(rid).getLevel();
+//            params.put("level","1");
+//        }
         List<RoleDO> roles = roleMapper.list(params);
         for (RoleDO roleDO : roles) {
             roleDO.setRoleSign("false");
@@ -73,14 +73,15 @@ public class RoleServiceImpl implements RoleService {
         }
         return roles;
     }
+
     @Transactional
     @Override
     public int save(RoleDO role) {
         //如果添加的是超级管理员，则获得所有菜单权限
-        if(role.getLevel()==0){
-            List<Long> longs = roleMenuMapper.listMenuIdByRoleId(role.getRoleId());
-            role.setMenuIds(longs);
-        }
+//        if(role.getLevel()==0){
+//        List<Long> longs = roleMenuMapper.listMenuIdByRoleId(role.getRoleId());
+//        role.setMenuIds(longs);
+//        }
         int count = roleMapper.save(role);
         List<Long> menuIds = role.getMenuIds();
         Long roleId = role.getRoleId();
@@ -93,7 +94,7 @@ public class RoleServiceImpl implements RoleService {
         }
         roleMenuMapper.removeByRoleId(roleId);
         if (rms.size() > 0) {
-            roleMenuMapper.batchSave(rms);
+            int i = roleMenuMapper.batchSave(rms);
         }
         return count;
     }

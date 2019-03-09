@@ -4,17 +4,16 @@
 <mapper namespace="com.urcs.manager.mp.system.dao.UserDao">
 
 	<select id="get" resultType="com.urcs.manager.mp.system.domain.UserDO">
-		select `user_id`,`username`,`name`,`password`,`company_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user where user_id = #{value}
+		select `user_id`,`username`,`name`,`password`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user where user_id = #{value}
 	</select>
 
 	<select id="list" resultType="com.urcs.manager.mp.system.domain.UserDO">
-		select `user_id`,`username`,`name`,`password`,`company_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user
+		select `user_id`,`username`,`name`,`password`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user
         <where>
 		  		  <if test="userId != null and userId != ''"> and user_id = #{userId} </if>
 		  		  <if test="username != null and username != ''"> and username = #{username} </if>
 		  		  <if test="name != null and name != ''"> and name = #{name} </if>
 		  		  <if test="password != null and password != ''"> and password = #{password} </if>
-			      <if test="companyId != null and companyId != ''"> and company_id = #{companyId} </if>
 		  		  <if test="email != null and email != ''"> and email = #{email} </if>
 		  		  <if test="mobile != null and mobile != ''"> and mobile = #{mobile} </if>
 		  		  <if test="status != null and status != ''"> and status = #{status} </if>
@@ -50,7 +49,6 @@
 		  		  <if test="username != null and username != ''"> and username = #{username} </if>
 		  		  <if test="name != null and name != ''"> and name = #{name} </if>
 		  		  <if test="password != null and password != ''"> and password = #{password} </if>
-			      <if test="companyId != null and companyId != ''"> and company_id = #{companyId} </if>
 		  		  <if test="email != null and email != ''"> and email = #{email} </if>
 		  		  <if test="mobile != null and mobile != ''"> and mobile = #{mobile} </if>
 		  		  <if test="status != null and status != ''"> and status = #{status} </if>
@@ -74,7 +72,6 @@
 			`username`,
 			`name`,
 			`password`,
-			`company_id`,
 			`email`,
 			`mobile`,
 			`status`,
@@ -95,7 +92,6 @@
 			#{username},
 			#{name},
 			#{password},
-			#{companyId},
 			#{email},
 			#{mobile},
 			#{status},
@@ -119,7 +115,6 @@
 			<if test="username != null">`username` = #{username}, </if>
 			<if test="name != null">`name` = #{name}, </if>
 			<if test="password != null">`password` = #{password}, </if>
-			<if test="companyId != null">`company_id` = #{companyId} </if>
 			<if test="email != null">`email` = #{email}, </if>
 			<if test="mobile != null">`mobile` = #{mobile}, </if>
 			<if test="status != null">`status` = #{status}, </if>

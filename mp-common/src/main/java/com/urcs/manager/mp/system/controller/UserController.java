@@ -42,11 +42,6 @@ public class UserController extends BaseController {
 	@GetMapping("/list")
 	@ResponseBody
     PageUtils list(@RequestParam Map<String, Object> params) {
-		//判断用户所属企业，查询企业下数据
-		Long companyId=ShiroUtils.getUser().getCompanyId();
-		if(companyId!=0){
-			params.put("companyId",companyId);
-		}
 		// 查询列表数据
 		Query query = new Query(params);
 		List<UserDO> sysUserList = userService.list(query);
@@ -82,19 +77,8 @@ public class UserController extends BaseController {
 	@PostMapping("/save")
 	@ResponseBody
 	R save(UserDO user) {
-		if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
-			return R.error(1, "演示系统不允许修改,完整体验请部署程序");
-		}
 		user.setPassword(MD5Utils.encrypt(user.getUsername(), user.getPassword()));
 
-		if(ShiroUtils.getUser().getCompanyId()==0){
-			//TODO 超级管理员怎么判断
-			//操作者是超级管理员。则。。  先给一个123
-			user.setCompanyId(123L);
-		}else{
-			//不是超级管理员，被添加用户与操作用户同一companyId
-			user.setCompanyId(ShiroUtils.getUser().getCompanyId());
-		}
 		if (userService.save(user) > 0) {
 			return R.ok();
 		}
@@ -106,9 +90,6 @@ public class UserController extends BaseController {
 	@PostMapping("/update")
 	@ResponseBody
 	R update(UserDO user) {
-		if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
-			return R.error(1, "演示系统不允许修改,完整体验请部署程序");
-		}
 		if (userService.update(user) > 0) {
 			return R.ok();
 		}
@@ -121,9 +102,6 @@ public class UserController extends BaseController {
 	@PostMapping("/updatePeronal")
 	@ResponseBody
 	R updatePeronal(UserDO user) {
-		if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
-			return R.error(1, "演示系统不允许修改,完整体验请部署程序");
-		}
 		if (userService.updatePersonal(user) > 0) {
 			return R.ok();
 		}

@@ -58,12 +58,6 @@ public class UserRealm extends AuthorizingRealm {
             roleIds.add(roleDO.getRoleId());
         }
         user.setRoleIds(roleIds);
-        Long userLevel=roleMapper.get(roleList.get(0).getRoleId()).getLevel();
-        if(userLevel==0){
-            user.setSystem(true);;
-        }else{
-            user.setSystem(false);
-        }
 
 
         // 账号不存在
