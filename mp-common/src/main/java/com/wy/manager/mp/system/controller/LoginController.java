@@ -2,9 +2,7 @@ package com.wy.manager.mp.system.controller;
 
 import com.wy.manager.mp.common.annotation.Log;
 import com.wy.manager.mp.common.controller.BaseController;
-import com.wy.manager.mp.common.domain.FileDO;
 import com.wy.manager.mp.common.domain.Tree;
-import com.wy.manager.mp.common.service.FileService;
 import com.wy.manager.mp.common.utils.MD5Utils;
 import com.wy.manager.mp.common.utils.R;
 import com.wy.manager.mp.common.utils.ShiroUtils;
@@ -32,9 +30,6 @@ public class LoginController extends BaseController {
 
 	@Autowired
 	MenuService menuService;
-	@Autowired
-	FileService fileService;
-	@Autowired
 	ShiroConfig shiroConfig;
 
 	@GetMapping({ "/", "" })
@@ -49,16 +44,6 @@ public class LoginController extends BaseController {
 		List<Tree<MenuDO>> menus = menuService.listMenuTree(getUserId());
 		model.addAttribute("menus", menus);
 		model.addAttribute("name", getUser().getName());
-		FileDO fileDO = fileService.get(getUser().getPicId());
-		if(fileDO!=null&&fileDO.getUrl()!=null){
-			if(fileService.isExist(fileDO.getUrl())){
-				model.addAttribute("picUrl",fileDO.getUrl());
-			}else {
-				model.addAttribute("picUrl","/img//icon/urcs.png");
-			}
-		}else {
-			model.addAttribute("picUrl","/img//icon/urcs.png");
-		}
 		model.addAttribute("username", getUser().getUsername());
 		return "index";
 	}

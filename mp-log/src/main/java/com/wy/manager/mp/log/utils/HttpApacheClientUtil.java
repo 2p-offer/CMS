@@ -21,7 +21,6 @@ import java.util.concurrent.Future;
 /**
  * apache官方http工具类
  *
- * Created by wuhao on 15-8-5.
  */
 public class HttpApacheClientUtil {
     CloseableHttpClient httpClient = HttpClients.createDefault();

@@ -4,7 +4,6 @@ import com.wy.manager.mp.common.annotation.Log;
 import com.wy.manager.mp.common.config.Constant;
 import com.wy.manager.mp.common.controller.BaseController;
 import com.wy.manager.mp.common.domain.Tree;
-import com.wy.manager.mp.common.service.DictService;
 import com.wy.manager.mp.common.utils.*;
 import com.wy.manager.mp.system.domain.RoleDO;
 import com.wy.manager.mp.system.domain.UserDO;
@@ -34,8 +33,6 @@ public class UserController extends BaseController {
     UserService userService;
 	@Autowired
     RoleService roleService;
-	@Autowired
-	DictService dictService;
 	@RequiresPermissions("sys:user:user")
 	@GetMapping("")
 	String user(Model model) {
@@ -100,18 +97,6 @@ public class UserController extends BaseController {
 	}
 
 
-	@RequiresPermissions("sys:user:edit")
-	@Log("更新用户")
-	@PostMapping("/updatePeronal")
-	@ResponseBody
-	R updatePeronal(UserDO user) {
-		if (userService.updatePersonal(user) > 0) {
-			return R.ok();
-		}
-		return R.error();
-	}
-
-
 	@RequiresPermissions("sys:user:remove")
 	@Log("删除用户")
 	@PostMapping("/remove")
@@ -120,9 +105,7 @@ public class UserController extends BaseController {
 		if(ShiroUtils.getUserId().equals(id)){
 			return R.error(1,"不可删除登录用户");
 		}
-		if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
-			return R.error(1, "演示系统不允许修改,完整体验请部署程序");
-		}
+
 		if (userService.remove(id) > 0) {
 			return R.ok();
 		}
@@ -139,9 +122,7 @@ public class UserController extends BaseController {
 				return R.error(1,"不可删除登录用户");
 			}
 		}
-		if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
-			return R.error(1, "演示系统不允许修改,完整体验请部署程序");
-		}
+
 		int r = userService.batchremove(userIds);
 		if (r > 0) {
 			return R.ok();
@@ -171,9 +152,7 @@ public class UserController extends BaseController {
 	@PostMapping("/resetPwd")
 	@ResponseBody
 	R resetPwd(UserVO userVO) {
-		if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
-			return R.error(1, "演示系统不允许修改,完整体验请部署程序");
-		}
+
 		try{
 			userService.resetPwd(userVO,getUser());
 			return R.ok();
@@ -187,9 +166,6 @@ public class UserController extends BaseController {
 	@PostMapping("/adminResetPwd")
 	@ResponseBody
 	R adminResetPwd(UserVO userVO) {
-		if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
-			return R.error(1, "演示系统不允许修改,完整体验请部署程序");
-		}
 		try{
 			userService.adminResetPwd(userVO);
 			return R.ok();
@@ -209,32 +185,5 @@ public class UserController extends BaseController {
 	@GetMapping("/treeView")
 	String treeView() {
 		return  prefix + "/userTree";
-	}
-
-	@GetMapping("/personal")
-	String personal(Model model) {
-		UserDO userDO  = userService.get(getUserId());
-		model.addAttribute("user",userDO);
-		model.addAttribute("hobbyList",dictService.getHobbyList(userDO));
-		model.addAttribute("sexList",dictService.getSexList());
-		return prefix + "/personal";
-	}
-	@ResponseBody
-	@PostMapping("/uploadImg")
-	R uploadImg(@RequestParam("avatar_file") MultipartFile file, String avatar_data, HttpServletRequest request) {
-		if ("test".equals(getUsername())) {
-			return R.error(1, "演示系统不允许修改,完整体验请部署程序");
-		}
-		Map<String, Object> result = new HashMap<>();
-		try {
-			result = userService.updatePersonalImg(file, avatar_data, getUserId());
-		} catch (Exception e) {
-			return R.error("更新图像失败！");
-		}
-		if(result!=null && result.size()>0){
-			return R.ok(result);
-		}else {
-			return R.error("更新图像失败！");
-		}
 	}
 }
