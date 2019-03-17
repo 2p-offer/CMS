@@ -6,7 +6,6 @@ server:
   port: 8200
 bootdo:
   uploadPath: /tmp/
-  logOperatorUrl: http://10.10.220.93:8515/data/operatorlog/get/
 logging:
   level:
     root: info
@@ -15,8 +14,8 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.jdbc.Driver
-#    url: jdbc:mysql://127.0.0.1:3306/CMS_WY?useUnicode=true&characterEncoding=utf8
-    url: jdbc:mysql://10.10.220.92:3306/CMS_WY?useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://127.0.0.1:3306/CMS_WY?useUnicode=true&characterEncoding=utf8
+#    url: jdbc:mysql://10.10.220.92:3306/CMS_WY?useUnicode=true&characterEncoding=utf8
     username: root
     password: mysql
     initialSize: 1
@@ -42,7 +41,8 @@ spring:
     # 合并多个DruidDataSource的监控数据
     #useGlobalDataSourceStat: true
   cache:
-    type: redis
+    type: ehcache
+#    type: redis
 
   redis:
     host: 10.10.220.92

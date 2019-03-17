@@ -3,11 +3,12 @@ package com.wy.manager.mp.analysisplatform.api;
 import com.alibaba.fastjson.annotation.JSONField;
 
 /**
- * 生物指标
+ * 生物指标 目前以数量为基准分析，可以使用堆积折线图展现（一个表内展现同一时间内不同生物的数量。）
  * Created by 2P on 19-3-14.
  */
 public class BiologicalArgs {
     //TODO 每个字段应该包括数量/种类/生物量
+
     //湿地植物
     @JSONField(name="wetlandplants")
     private String wetlandplants;

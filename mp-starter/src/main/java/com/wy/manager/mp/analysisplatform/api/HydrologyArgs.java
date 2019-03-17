@@ -3,7 +3,7 @@ package com.wy.manager.mp.analysisplatform.api;
 import com.alibaba.fastjson.annotation.JSONField;
 
 /**
- * 生境指标下水文指标
+ * 生境指标下水文指标（以柱形图形式展示，每小时的三个特征数据值）
  * Created by 2P on 19-3-14.
  */
 public class HydrologyArgs {

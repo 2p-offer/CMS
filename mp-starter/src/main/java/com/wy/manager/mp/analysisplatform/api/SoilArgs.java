@@ -4,7 +4,7 @@ import com.alibaba.fastjson.annotation.JSONField;
 import com.sun.swing.internal.plaf.metal.resources.metal;
 
 /**
- * 土壤数据
+ * 土壤数据（与生物指标类似，堆积折线表示）
  * Created by 2P on 19-3-14.
  */
 public class SoilArgs {
