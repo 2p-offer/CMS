@@ -6,6 +6,16 @@
 <body class="gray-bg">
 <div class="wrapper wrapper-content ">
 
+    <form action="/analysis/test/uploadExcel" id="excelFile" name="excelFile" method="POST" target="hiddenFrame" enctype="multipart/form-data">
+
+        <input type="file" name="uploadFile" id="uploadFile">
+
+        <input type="text" id="callback" name="callback" style="display:none;">
+
+        <iframe name="hiddenFrame" style="display:none"></iframe>
+        <input id="submitExcel" type="button" value="上传">
+        <input id="sub" type="submit" value="提交">
+    </form>
 </div>
 <div th:include="include :: footer"></div>
 <script type="text/javascript" src="/js/appjs/analysis/test/test.js"></script>
