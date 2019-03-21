@@ -9,6 +9,9 @@ import com.alibaba.fastjson.annotation.JSONField;
 public class BiologicalArgs {
     //TODO 每个字段应该包括数量/种类/生物量
 
+    @JSONField(name="id")
+    private String id;
+
     //湿地植物
     @JSONField(name="wetlandplants")
     private String wetlandplants;
@@ -24,8 +27,19 @@ public class BiologicalArgs {
     //鱼类
     @JSONField(name="fish")
     private String fish;
+
+    @JSONField(name="uptime")
+    private String uptime;
     //扩展字段
     private String ext;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getWetlandplants() {
         return wetlandplants;
@@ -73,5 +87,13 @@ public class BiologicalArgs {
 
     public void setExt(String ext) {
         this.ext = ext;
+    }
+
+    public String getUptime() {
+        return uptime;
+    }
+
+    public void setUptime(String uptime) {
+        this.uptime = uptime;
     }
 }

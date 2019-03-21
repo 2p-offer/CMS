@@ -8,6 +8,10 @@ import com.sun.swing.internal.plaf.metal.resources.metal;
  * Created by 2P on 19-3-14.
  */
 public class SoilArgs {
+
+    @JSONField(name="id")
+    private String id;
+
     //碳氮硫磷
     @JSONField(name="cnps")
     private String cnps;
@@ -23,8 +27,19 @@ public class SoilArgs {
     //含水量
     @JSONField(name="watercontent")
     private String watercontent;
+
+    @JSONField(name="uptime")
+    private String uptime;
     //扩展字段
     private String ext;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getCnps() {
         return cnps;
@@ -72,5 +87,13 @@ public class SoilArgs {
 
     public void setExt(String ext) {
         this.ext = ext;
+    }
+
+    public String getUptime() {
+        return uptime;
+    }
+
+    public void setUptime(String uptime) {
+        this.uptime = uptime;
     }
 }

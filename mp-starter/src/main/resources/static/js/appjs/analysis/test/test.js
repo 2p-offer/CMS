@@ -5,7 +5,7 @@ $(function () {
             cache: true,
             contentType:"multipart/form-data",
             type: "POST",
-            url: "/analysis/test/uploadExcel",
+            url: "/analysis/test/uploadExcel/",
             data: $('#excelFile').serialize(),// 你的formid
             async: false,
             error: function (request) {

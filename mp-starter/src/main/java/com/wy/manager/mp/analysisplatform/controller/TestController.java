@@ -5,6 +5,7 @@ import com.wy.manager.mp.analysisplatform.api.BiologicalArgs;
 import com.wy.manager.mp.analysisplatform.api.utils.DataParseUtils;
 import com.wy.manager.mp.analysisplatform.api.utils.SheetUtils;
 import com.wy.manager.mp.analysisplatform.config.AnalysisCommonConfig;
+import com.wy.manager.mp.analysisplatform.service.FileReceiveService;
 import com.wy.manager.mp.common.utils.R;
 import org.apache.shiro.web.servlet.ShiroHttpServletRequest;
 import org.slf4j.Logger;
@@ -12,10 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.ResourceUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
@@ -39,13 +37,16 @@ public class TestController {
     @Autowired
     AnalysisCommonConfig analysisConfig;
 
+    @Autowired
+    FileReceiveService fileReceiveService;
     @GetMapping()
     String test() {
         return prefix + "/test";
     }
 
-    @PostMapping("/uploadExcel")
-    R uploadExcel(@RequestParam(value = "uploadFile", required = false) MultipartFile file, HttpServletRequest request) {
+    @ResponseBody
+    @PostMapping("/uploadExcel/{type}")
+    R uploadExcel(@RequestParam(value = "uploadFile", required = false) MultipartFile file, @PathVariable String type) {
         try {
 //            ShiroHttpServletRequest shiroRequest = (ShiroHttpServletRequest) request;
 //            CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
@@ -58,11 +59,7 @@ public class TestController {
 //            path= ResourceUtils.getURL("classpath:").getPath();
             String path=analysisConfig.getFilepath();
             String fileName = file.getName();
-            List<String[]> strings = SheetUtils.readExcel(file);
-            BiologicalArgs biologicalArgs = DataParseUtils.parstToBiological(strings);
-            String s = JSONObject.toJSONString(biologicalArgs);
-
-            System.out.println("sheet content"+s);
+            fileReceiveService.dealFile(file,type);
             File f=new File(path,fileName);
             if(!f.exists()){
                 f.createNewFile();

@@ -7,6 +7,10 @@ import com.alibaba.fastjson.annotation.JSONField;
  * Created by 2P on 19-3-14.
  */
 public class MeteorologicalArgs {
+
+    @JSONField(name="id")
+    private String id;
+
     //风速
     @JSONField(name="windspeed")
     private String windspeed;
@@ -22,8 +26,19 @@ public class MeteorologicalArgs {
     //辐射
     @JSONField(name="radiation")
     private String radiation;
+
+    @JSONField(name="uptime")
+    private String uptime;
     //扩展字段
     private String ext;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getWindspeed() {
         return windspeed;
@@ -71,5 +86,13 @@ public class MeteorologicalArgs {
 
     public void setExt(String ext) {
         this.ext = ext;
+    }
+
+    public String getUptime() {
+        return uptime;
+    }
+
+    public void setUptime(String uptime) {
+        this.uptime = uptime;
     }
 }

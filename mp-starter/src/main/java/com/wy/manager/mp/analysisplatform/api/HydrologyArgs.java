@@ -8,6 +8,8 @@ import com.alibaba.fastjson.annotation.JSONField;
  */
 public class HydrologyArgs {
 
+    @JSONField(name="id")
+    private String id;
     //流速
     @JSONField(name="currentspeed")
     private String currentspeed ;
@@ -17,9 +19,19 @@ public class HydrologyArgs {
     //水位
     @JSONField(name="waterlevel")
     private String waterlevel ;
+
+    @JSONField(name="uptime")
+    private String uptime;
     //扩展
     private String ext;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getCurrentspeed() {
         return currentspeed;
@@ -53,6 +65,11 @@ public class HydrologyArgs {
         this.ext = ext;
     }
 
+    public String getUptime() {
+        return uptime;
+    }
 
-
+    public void setUptime(String uptime) {
+        this.uptime = uptime;
+    }
 }
