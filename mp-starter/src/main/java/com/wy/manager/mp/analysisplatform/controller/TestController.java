@@ -1,5 +1,9 @@
 package com.wy.manager.mp.analysisplatform.controller;
 
+import com.alibaba.fastjson.JSONObject;
+import com.wy.manager.mp.analysisplatform.api.BiologicalArgs;
+import com.wy.manager.mp.analysisplatform.api.utils.DataParseUtils;
+import com.wy.manager.mp.analysisplatform.api.utils.SheetUtils;
 import com.wy.manager.mp.analysisplatform.config.AnalysisCommonConfig;
 import com.wy.manager.mp.common.utils.R;
 import org.apache.shiro.web.servlet.ShiroHttpServletRequest;
@@ -18,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * Created by 2P on 19-3-18.
@@ -49,6 +54,11 @@ public class TestController {
 //            path= ResourceUtils.getURL("classpath:").getPath();
             String path=analysisConfig.getFilepath();
             String fileName = file.getName();
+            List<String[]> strings = SheetUtils.readExcel(file);
+            BiologicalArgs biologicalArgs = DataParseUtils.parstToBiological(strings);
+            String s = JSONObject.toJSONString(biologicalArgs);
+
+            System.out.println("sheet content"+s);
             File f=new File(path,fileName);
             if(!f.exists()){
                 f.createNewFile();

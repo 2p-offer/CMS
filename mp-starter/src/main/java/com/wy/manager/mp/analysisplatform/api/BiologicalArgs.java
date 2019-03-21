@@ -16,11 +16,11 @@ public class BiologicalArgs {
     @JSONField(name="phytoplankton")
     private String phytoplankton;
     //浮游动物
-    @JSONField(name="Zooplankton")
-    private String Zooplankton;
+    @JSONField(name="zooplankton")
+    private String zooplankton;
     //底栖生物
     @JSONField(name="Benthos")
-    private String Benthos;
+    private String benthos;
     //鱼类
     @JSONField(name="fish")
     private String fish;
@@ -44,19 +44,19 @@ public class BiologicalArgs {
     }
 
     public String getZooplankton() {
-        return Zooplankton;
+        return zooplankton;
     }
 
     public void setZooplankton(String zooplankton) {
-        Zooplankton = zooplankton;
+        this.zooplankton = zooplankton;
     }
 
     public String getBenthos() {
-        return Benthos;
+        return benthos;
     }
 
     public void setBenthos(String benthos) {
-        Benthos = benthos;
+        this.benthos = benthos;
     }
 
     public String getFish() {
