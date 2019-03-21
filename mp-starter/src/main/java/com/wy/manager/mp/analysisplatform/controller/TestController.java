@@ -7,6 +7,8 @@ import com.wy.manager.mp.analysisplatform.api.utils.SheetUtils;
 import com.wy.manager.mp.analysisplatform.config.AnalysisCommonConfig;
 import com.wy.manager.mp.common.utils.R;
 import org.apache.shiro.web.servlet.ShiroHttpServletRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.ResourceUtils;
@@ -31,6 +33,8 @@ import java.util.List;
 @Controller
 public class TestController {
     String prefix = "analysis";
+
+    private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     AnalysisCommonConfig analysisConfig;
