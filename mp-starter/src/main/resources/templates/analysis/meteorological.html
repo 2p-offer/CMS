@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content ">
+
+
+</div>
+<div th:include="include :: footer"></div>
+<script type="text/javascript" src="/js/appjs/analysis/test/test.js"></script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content ">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox">
+                <div class="ibox-body">
+                    <div class="fixed-table-toolbar">
+                        <div class="columns pull-left">
+                            <form action="/analysis/test/uploadExcel/biological" id="excelFile" name="excelFile" method="POST" target="hiddenFrame" enctype="multipart/form-data">
+
+                                <input type="file" name="uploadFile" id="uploadFile">
+
+                                <input type="text" id="callback" name="callback" style="display:none;">
+
+                                <iframe name="hiddenFrame" style="display:none"></iframe>
+                                <input id="sub" type="submit" value="提交">
+                            </form>
+                            <button shiro:hasPermission="sys:user:batchRemove" type="button"
+                                    class="btn  btn-danger" onclick="batchRemove()">
+                                <i class="fa fa-trash hidden" aria-hidden="true"></i>删除
+                            </button>
+                        </div>
+                        <div class="columns pull-right">
+                            <button class="btn btn-success" onclick="reLoad()">查询</button>
+                        </div>
+
+                        <div class="columns pull-right col-md-2 nopadding">
+                            <input id="searchName" type="text" class="form-control"
+                                   placeholder="姓名">
+                        </div>
+                    </div>
+                    <table id="exampleTable" data-mobile-responsive="true">
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--shiro控制bootstraptable行内按钮看见性 来自bootdo的创新方案 -->
+    <div>
+        <script type="text/javascript">
+            var s_remove_h = 'hidden';
+        </script>
+    </div>
+    <div shiro:hasPermission="sys:user:remove">
+        <script type="text/javascript">
+            var s_remove_h = '';
+        </script>
+    </div>
+</div>
+<div th:include="include :: footer"></div>
+<script type="text/javascript" src="/js/appjs/analysis/biological/biological.js"></script>
+</body>
+</html>

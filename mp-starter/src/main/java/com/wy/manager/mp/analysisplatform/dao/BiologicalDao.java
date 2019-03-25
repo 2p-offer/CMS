@@ -14,11 +14,7 @@ import java.util.Map;
 @Component
 @Mapper
 public interface BiologicalDao {
-    @Results({
-            @Result(property = "id", column = "id"),
-            @Result(property = "name", column = "name"),
-            @Result(property = "age", column = "age")
-    })
+
     @Select("select * from aly_biological")
     List<BiologicalArgs> getBiologicalAll();
 
