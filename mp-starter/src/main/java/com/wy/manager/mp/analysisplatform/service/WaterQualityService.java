@@ -13,6 +13,8 @@ public interface WaterQualityService {
     //分页查询
     public List<WaterQualityArgs> list(Map<String, Object> map);
 
+    public List<WaterQualityArgs> listAll();
+
     WaterQualityArgs get(Long id);
 
     int count(Map<String, Object> map);

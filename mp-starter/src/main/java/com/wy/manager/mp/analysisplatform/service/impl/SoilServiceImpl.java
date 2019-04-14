@@ -16,6 +16,11 @@ public class SoilServiceImpl implements SoilService {
     }
 
     @Override
+    public List<SoilArgs> listAll() {
+        return null;
+    }
+
+    @Override
     public SoilArgs get(Long id) {
         return null;
     }

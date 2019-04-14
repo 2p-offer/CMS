@@ -13,6 +13,9 @@ public interface HydrologyService {
     //分页查询
     public List<HydrologyArgs> list(Map<String, Object> map);
 
+    public List<HydrologyArgs> listAll();
+
+
     HydrologyArgs get(Long id);
 
     int count(Map<String, Object> map);

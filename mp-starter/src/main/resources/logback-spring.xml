@@ -25,12 +25,12 @@
 
     <logger name="com.urcs.bmp. additivity="false">
         <appender-ref ref="console"/>
-        <appender-ref ref="logFile" />
+<!--        <appender-ref ref="logFile" />-->
     </logger>
 
     <root level="error">
         <appender-ref ref="console"/>
-        <appender-ref ref="logFile" />
+<!--        <appender-ref ref="logFile" />-->
     </root>
 
 </configuration>

@@ -13,6 +13,9 @@ public interface MeteorologicalService {
     //分页查询
     public List<MeteorologicalArgs> list(Map<String, Object> map);
 
+    public List<MeteorologicalArgs> listAll();
+
+
     MeteorologicalArgs get(Long id);
 
     int count(Map<String, Object> map);

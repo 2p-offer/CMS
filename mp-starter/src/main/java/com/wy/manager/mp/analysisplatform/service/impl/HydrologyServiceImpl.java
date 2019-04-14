@@ -17,6 +17,11 @@ public class HydrologyServiceImpl implements HydrologyService {
     }
 
     @Override
+    public List<HydrologyArgs> listAll() {
+        return null;
+    }
+
+    @Override
     public HydrologyArgs get(Long id) {
         return null;
     }

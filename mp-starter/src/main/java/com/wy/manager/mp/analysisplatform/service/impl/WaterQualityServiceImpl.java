@@ -16,6 +16,11 @@ public class WaterQualityServiceImpl implements WaterQualityService {
     }
 
     @Override
+    public List<WaterQualityArgs> listAll() {
+        return null;
+    }
+
+    @Override
     public WaterQualityArgs get(Long id) {
         return null;
     }

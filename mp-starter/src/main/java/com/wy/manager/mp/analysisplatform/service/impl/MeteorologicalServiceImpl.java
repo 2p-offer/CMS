@@ -16,6 +16,11 @@ public class MeteorologicalServiceImpl implements MeteorologicalService {
     }
 
     @Override
+    public List<MeteorologicalArgs> listAll() {
+        return null;
+    }
+
+    @Override
     public MeteorologicalArgs get(Long id) {
         return null;
     }

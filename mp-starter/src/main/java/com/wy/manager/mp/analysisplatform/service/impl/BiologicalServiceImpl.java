@@ -24,6 +24,11 @@ public class BiologicalServiceImpl implements BiologicalService {
     }
 
     @Override
+    public List<BiologicalArgs> listAll() {
+        return biologicalDao.getBiologicalAll();
+    }
+
+    @Override
     public BiologicalArgs get(Long id) {
         return null;
     }

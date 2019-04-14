@@ -13,6 +13,8 @@ public interface SoilService {
     //分页查询
     public List<SoilArgs> list(Map<String, Object> map);
 
+    List<SoilArgs> listAll();
+
     SoilArgs get(Long id);
 
     int count(Map<String, Object> map);
