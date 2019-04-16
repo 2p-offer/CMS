@@ -91,16 +91,15 @@ public class DataParseUtils {
             WaterQualityArgs tmp = new WaterQualityArgs();
             tmp.setPh(strings[0]);
             tmp.setDissolvedoxygen(strings[1]);
-            tmp.setPh(strings[2]);
-            tmp.setConductivity(strings[3]);
-            tmp.setTurbidity(strings[4]);
-            tmp.setTemperature(strings[5]);
-            tmp.setSalinity(strings[6]);
-            tmp.setAmmonianitrogen(strings[7]);
-            tmp.setTotalnitrogen(strings[8]);
-            tmp.setTotalphosphorus(strings[9]);
-            tmp.setKmno4(strings[10]);
-            tmp.setUptime(strings[11]);
+            tmp.setConductivity(strings[2]);
+            tmp.setTurbidity(strings[3]);
+            tmp.setTemperature(strings[4]);
+            tmp.setSalinity(strings[5]);
+            tmp.setAmmonianitrogen(strings[6]);
+            tmp.setTotalnitrogen(strings[7]);
+            tmp.setTotalphosphorus(strings[8]);
+            tmp.setKmno4(strings[9]);
+            tmp.setUptime(strings[10]);
             res.add(tmp);
         }
         return res;

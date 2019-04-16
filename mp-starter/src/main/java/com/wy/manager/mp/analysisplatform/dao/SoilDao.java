@@ -31,7 +31,7 @@ public interface SoilDao {
     @Select("select count(*) from aly_soil")
     int getCount(Map<String, Object> map);
 
-    @Insert("insert into aly_soil(cnps,heavymetal,ph,saltion,watercontent,fish,uptime) values(#{cnps},#{heavymetal},#{ph},#{saltion},#{watercontent},#{uptime})")
+    @Insert("insert into aly_soil(cnps,heavymetal,ph,saltion,watercontent,uptime) values(#{cnps},#{heavymetal},#{ph},#{saltion},#{watercontent},#{uptime})")
     void insertSoil(SoilArgs soilArgs);
 
     @Delete("delete from aly_soil where id=#{id}")

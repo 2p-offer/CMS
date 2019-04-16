@@ -18,22 +18,21 @@ import java.util.Map;
 @Mapper
 public interface WaterQualityDao {
 
-    @Select("select * from aly_waterQuality order by uptime desc  limit #{offset}, #{limit}" )
+    @Select("select * from aly_waterquality order by uptime desc  limit #{offset}, #{limit}" )
     List<WaterQualityArgs> getWaterQuality(Map<String, Object> map);
 
-    @Select("select * from aly_waterQuality order by uptime" )
+    @Select("select * from aly_waterquality order by uptime" )
     List<WaterQualityArgs> getWaterQualityAll();
 
-    @Select("select * from aly_waterQuality where id=#{id}")
+    @Select("select * from aly_waterquality where id=#{id}")
     WaterQualityArgs getWaterQualityById(String id);
 
-    @Select("select count(*) from aly_waterQuality")
+    @Select("select count(*) from aly_waterquality")
     int getCount(Map<String, Object> map);
-
-    @Insert("insert into aly_waterQuality(ph,dissolvedoxygen,conductivity,turbidity,temperature,salinity,ammonianitrogen,totalphosphorus,totalnitrogen,kmno4,uptime) values(#{ph},#{dissolvedoxygen},#{conductivity},#{turbidity},#{temperature},,#{salinity},#{ammonianitrogen},#{totalphosphorus},#{totalnitrogen},#{kmno4},#{uptime})")
+    @Insert("insert into aly_waterquality(ph,dissolvedoxygen,conductivity,turbidity,temperature,salinity,ammonianitrogen,totalphosphorus,totalnitrogen,kmno4,uptime) values(#{ph},#{dissolvedoxygen},#{conductivity},#{turbidity},#{temperature},#{salinity},#{ammonianitrogen},#{totalphosphorus},#{totalnitrogen},#{kmno4},#{uptime})")
     void insertWaterQuality(WaterQualityArgs waterQualityArgs);
 
-    @Delete("delete from aly_waterQuality where id=#{id}")
+    @Delete("delete from aly_waterquality where id=#{id}")
     int remove(String id);
 
 
