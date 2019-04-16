@@ -39,8 +39,8 @@ public class BiologicalServiceImpl implements BiologicalService {
     }
 
     @Override
-    public int save(BiologicalArgs bio) {
-        return 0;
+    public void save(BiologicalArgs bio) {
+        biologicalDao.insertBiological(bio);
     }
 
     @Override

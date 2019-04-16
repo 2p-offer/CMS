@@ -1,7 +1,10 @@
 package com.wy.manager.mp.analysisplatform.service.impl;
 
 import com.wy.manager.mp.analysisplatform.api.HydrologyArgs;
+import com.wy.manager.mp.analysisplatform.dao.HydrologyDao;
 import com.wy.manager.mp.analysisplatform.service.HydrologyService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -9,11 +12,15 @@ import java.util.Map;
 /**
  * Created by 2P on 19-3-25.
  */
+@Service
 public class HydrologyServiceImpl implements HydrologyService {
+
+    @Autowired
+    HydrologyDao hydrologyDao;
 
     @Override
     public List<HydrologyArgs> list(Map<String, Object> map) {
-        return null;
+        return hydrologyDao.getHydrology(map);
     }
 
     @Override
@@ -23,17 +30,18 @@ public class HydrologyServiceImpl implements HydrologyService {
 
     @Override
     public HydrologyArgs get(Long id) {
-        return null;
+        return hydrologyDao.getHydrologyById(id.toString());
     }
 
     @Override
     public int count(Map<String, Object> map) {
-        return 0;
+        return hydrologyDao.getCount(map);
     }
 
     @Override
     public int save(HydrologyArgs bio) {
-        return 0;
+         hydrologyDao.insertHydrology(bio);
+         return 1;
     }
 
     @Override
@@ -43,7 +51,7 @@ public class HydrologyServiceImpl implements HydrologyService {
 
     @Override
     public int remove(String id) {
-        return 0;
+        return hydrologyDao.remove(id);
     }
 
     @Override

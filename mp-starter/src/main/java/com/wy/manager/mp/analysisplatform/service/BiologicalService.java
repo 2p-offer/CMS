@@ -22,7 +22,7 @@ public interface BiologicalService {
 
     int count(Map<String, Object> map);
 
-    int save(BiologicalArgs bio);
+    void save(BiologicalArgs bio);
 
     int update(BiologicalArgs bio);
 

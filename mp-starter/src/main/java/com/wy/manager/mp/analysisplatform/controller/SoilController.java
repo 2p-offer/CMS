@@ -80,7 +80,7 @@ public class SoilController {
 
     @GetMapping("/showCharts")
     String showCharts() {
-        return prefix + "/biologicalCharts";
+        return prefix + "/soilCharts";
     }
 
     @ResponseBody

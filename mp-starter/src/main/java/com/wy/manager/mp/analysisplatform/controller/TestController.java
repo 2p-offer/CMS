@@ -29,7 +29,7 @@ import java.util.List;
  */
 @RequestMapping("/analysis/test")
 @Controller
-public class TestController {
+public class    TestController {
     String prefix = "analysis";
 
     private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());

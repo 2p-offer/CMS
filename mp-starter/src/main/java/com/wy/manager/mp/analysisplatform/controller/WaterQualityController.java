@@ -80,7 +80,7 @@ public class WaterQualityController {
 
     @GetMapping("/showCharts")
     String showCharts() {
-        return prefix + "/biologicalCharts";
+        return prefix + "/waterQualityCharts";
     }
 
     @ResponseBody

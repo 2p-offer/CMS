@@ -9,6 +9,7 @@ import java.util.Map;
 /**
  * Created by 2P on 19-3-25.
  */
+
 public interface HydrologyService {
     //分页查询
     public List<HydrologyArgs> list(Map<String, Object> map);

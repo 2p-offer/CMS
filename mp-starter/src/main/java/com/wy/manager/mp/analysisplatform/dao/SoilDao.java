@@ -21,6 +21,8 @@ public interface SoilDao {
 
     @Select("select * from aly_soil order by uptime desc  limit #{offset}, #{limit}" )
     List<SoilArgs> getSoil(Map<String, Object> map);
+    @Select("select * from aly_soil order by uptime desc")
+    List<SoilArgs> getSoilAll();
 
 
     @Select("select * from aly_soil where id=#{id}")

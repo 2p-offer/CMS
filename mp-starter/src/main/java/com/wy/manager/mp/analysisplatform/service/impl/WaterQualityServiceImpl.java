@@ -1,7 +1,10 @@
 package com.wy.manager.mp.analysisplatform.service.impl;
 
 import com.wy.manager.mp.analysisplatform.api.WaterQualityArgs;
+import com.wy.manager.mp.analysisplatform.dao.WaterQualityDao;
 import com.wy.manager.mp.analysisplatform.service.WaterQualityService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -9,30 +12,35 @@ import java.util.Map;
 /**
  * Created by 2P on 19-3-25.
  */
+@Service
 public class WaterQualityServiceImpl implements WaterQualityService {
+
+    @Autowired
+    WaterQualityDao waterQualityDao;
     @Override
     public List<WaterQualityArgs> list(Map<String, Object> map) {
-        return null;
+        return waterQualityDao.getWaterQuality(map);
     }
 
     @Override
     public List<WaterQualityArgs> listAll() {
-        return null;
+        return waterQualityDao.getWaterQualityAll();
     }
 
     @Override
     public WaterQualityArgs get(Long id) {
-        return null;
+        return waterQualityDao.getWaterQualityById(id.toString());
     }
 
     @Override
     public int count(Map<String, Object> map) {
-        return 0;
+        return waterQualityDao.getCount(map);
     }
 
     @Override
     public int save(WaterQualityArgs bio) {
-        return 0;
+        waterQualityDao.insertWaterQuality(bio);
+        return 1;
     }
 
     @Override
@@ -42,7 +50,7 @@ public class WaterQualityServiceImpl implements WaterQualityService {
 
     @Override
     public int remove(String id) {
-        return 0;
+        return waterQualityDao.remove(id);
     }
 
     @Override

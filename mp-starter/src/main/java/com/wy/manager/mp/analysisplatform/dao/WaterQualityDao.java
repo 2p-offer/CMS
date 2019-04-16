@@ -21,6 +21,9 @@ public interface WaterQualityDao {
     @Select("select * from aly_waterQuality order by uptime desc  limit #{offset}, #{limit}" )
     List<WaterQualityArgs> getWaterQuality(Map<String, Object> map);
 
+    @Select("select * from aly_waterQuality order by uptime" )
+    List<WaterQualityArgs> getWaterQualityAll();
+
     @Select("select * from aly_waterQuality where id=#{id}")
     WaterQualityArgs getWaterQualityById(String id);
 
