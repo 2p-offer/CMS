@@ -14,6 +14,16 @@ public class AnalysisCommonConfig {
 
     private String filepath;
 
+    private String excelspath;
+
+    public String getExcelspath() {
+        return excelspath;
+    }
+
+    public void setExcelspath(String excelspath) {
+        this.excelspath = excelspath;
+    }
+
     public String getFilepath() {
         return filepath;
     }

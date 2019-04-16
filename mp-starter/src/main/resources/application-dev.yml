@@ -63,3 +63,4 @@ spring:
 biz:
   analysis:
     filepath : /tmp/excels
+    excelspath : /Users/ray/Project/IdeaProjects/CMS/mp-starter/src/main/resources/
