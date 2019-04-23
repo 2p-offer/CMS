@@ -45,7 +45,7 @@ public class WaterQualityArgs {
     @JSONField(name="uptime")
     private String uptime;
     //扩展
-    private String ext;
+//    private String ext;
 
     public String getId() {
         return id;
@@ -135,13 +135,13 @@ public class WaterQualityArgs {
         this.kmno4 = kmno4;
     }
 
-    public String getExt() {
-        return ext;
-    }
-
-    public void setExt(String ext) {
-        this.ext = ext;
-    }
+//    public String getExt() {
+//        return ext;
+//    }
+//
+//    public void setExt(String ext) {
+//        this.ext = ext;
+//    }
 
     public String getUptime() {
         return uptime;

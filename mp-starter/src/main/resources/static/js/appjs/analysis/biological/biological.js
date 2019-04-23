@@ -183,7 +183,7 @@ function showCharts() {
         title: '生物指标图表',
         type: 2,
         shade: false,
-        area: ['800px', '520px'],
+        area: ['800px', '550px'],
         shadeClose: false,
         //点击遮罩关闭
         content: prefix + "/showCharts"

@@ -150,3 +150,16 @@ function batchRemove() {
         });
     }, function() {});
 }
+
+
+function showCharts() {
+    layer.open({
+        title: '气象数据图表',
+        type: 2,
+        shade: false,
+        area: ['800px', '550px'],
+        shadeClose: false,
+        //点击遮罩关闭
+        content: prefix + "/showCharts"
+    });
+}

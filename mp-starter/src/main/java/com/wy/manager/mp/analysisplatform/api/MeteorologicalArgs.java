@@ -29,8 +29,6 @@ public class MeteorologicalArgs {
 
     @JSONField(name="uptime")
     private String uptime;
-    //扩展字段
-    private String ext;
 
     public String getId() {
         return id;
@@ -80,13 +78,6 @@ public class MeteorologicalArgs {
         this.radiation = radiation;
     }
 
-    public String getExt() {
-        return ext;
-    }
-
-    public void setExt(String ext) {
-        this.ext = ext;
-    }
 
     public String getUptime() {
         return uptime;

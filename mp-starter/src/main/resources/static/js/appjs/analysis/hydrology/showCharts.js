@@ -1,4 +1,4 @@
-var prefix = "/analysis/biological";
+var prefix = "/analysis/hydrology"
 var xData = [];
 var dataName = [];
 var data=[];

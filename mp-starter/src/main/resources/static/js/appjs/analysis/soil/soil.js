@@ -1,4 +1,4 @@
-var prefix = "/analysis/soil"
+var prefix = "/analysis/soil";
 $(function() {
     load();
 });
@@ -163,4 +163,17 @@ function batchRemove() {
             }
         });
     }, function() {});
+}
+
+
+function showCharts() {
+    layer.open({
+        title: '土壤数据图表',
+        type: 2,
+        shade: false,
+        area: ['800px', '550px'],
+        shadeClose: false,
+        //点击遮罩关闭
+        content: prefix + "/showCharts"
+    });
 }

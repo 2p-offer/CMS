@@ -22,9 +22,6 @@ public class HydrologyArgs {
 
     @JSONField(name="uptime")
     private String uptime;
-    //扩展
-    private String ext;
-
     public String getId() {
         return id;
     }
@@ -55,14 +52,6 @@ public class HydrologyArgs {
 
     public void setWaterlevel(String waterlevel) {
         this.waterlevel = waterlevel;
-    }
-
-    public String getExt() {
-        return ext;
-    }
-
-    public void setExt(String ext) {
-        this.ext = ext;
     }
 
     public String getUptime() {

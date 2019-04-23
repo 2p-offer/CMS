@@ -30,8 +30,8 @@ public class SoilArgs {
 
     @JSONField(name="uptime")
     private String uptime;
-    //扩展字段
-    private String ext;
+//    //扩展字段
+//    private String ext;
 
     public String getId() {
         return id;
@@ -81,13 +81,13 @@ public class SoilArgs {
         this.watercontent = watercontent;
     }
 
-    public String getExt() {
-        return ext;
-    }
-
-    public void setExt(String ext) {
-        this.ext = ext;
-    }
+//    public String getExt() {
+//        return ext;
+//    }
+//
+//    public void setExt(String ext) {
+//        this.ext = ext;
+//    }
 
     public String getUptime() {
         return uptime;
