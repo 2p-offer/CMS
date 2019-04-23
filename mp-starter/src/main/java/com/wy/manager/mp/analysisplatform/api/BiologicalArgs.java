@@ -30,8 +30,6 @@ public class BiologicalArgs {
 
     @JSONField(name="uptime")
     private String uptime;
-    //扩展字段
-    private String ext;
 
     public String getId() {
         return id;
@@ -81,13 +79,6 @@ public class BiologicalArgs {
         this.fish = fish;
     }
 
-    public String getExt() {
-        return ext;
-    }
-
-    public void setExt(String ext) {
-        this.ext = ext;
-    }
 
     public String getUptime() {
         return uptime;

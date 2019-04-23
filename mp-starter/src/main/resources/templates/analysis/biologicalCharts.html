@@ -2,14 +2,15 @@
 <html>
 <meta charset="utf-8">
 <head th:include="include::header">
+
+    <link rel="stylesheet" href="/css/analysis/biologicalCharts.css">
 </head>
 <body>
 
-<div id="charts"></div>
-
+<div id="charts" style="width: 750px;height: 460px;"></div>
 
 <div th:include="include::footer"></div>
-<script src="../../static/js/plugins/echarts/echarts-all.js"></script>
+<script src="/js/plugins/echarts/echarts.js"></script>
 <script type="text/javascript" src="/js/appjs/analysis/biological/showCharts.js">
 </script>
 </body>

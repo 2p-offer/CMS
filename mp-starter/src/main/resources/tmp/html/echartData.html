@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .chart{
+            width: 800px;
+            height:520px;
+
+        }
+    </style>
+</head>
+<body>
+<div class="chart" id="showData"></div>
+<script src="../js/echarts.js"></script>
+<script src="../js/jquery.js"></script>
+</body>
+<script>
+//    var noise = getNoiseHelper();
+
+    var xData = [];
+    var dataName = [];
+    var data=[];
+
+
+   $(function () {
+       $.ajax({
+           url:"../data/data.json",
+           type:"GET",
+           success:function (res) {
+               console.log(res)
+               console.log()
+               for(var i=0;i<res.length;i++){
+                   xData.push(i+"天");
+                   dataName.push(res[i].name)
+                   data.push(res[i])
+               }
+               var mychart=echarts.init(document.getElementById("showData"));
+               mychart.setOption(option,xData,dataName,data);
+           }
+       })
+   })
+
+ var option = {
+    title: {
+        text: '折线图堆叠'
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        data:dataName
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+//    toolbox: {
+//        feature: {
+//            saveAsImage: {}
+//        }
+//    },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: xData
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series:data
+};
+
+
+
+
+
+
+</script>
+</html>

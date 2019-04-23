@@ -180,11 +180,12 @@ function batchRemove() {
 
 function showCharts() {
     layer.open({
+        title: '生物指标图表',
         type: 2,
-        title: '生物指标',
-        maxmin: true,
-        shadeClose: false, // 点击遮罩关闭层
+        shade: false,
         area: ['800px', '520px'],
-        content: prefix + '/showCharts' // iframe的url
+        shadeClose: false,
+        //点击遮罩关闭
+        content: prefix + "/showCharts"
     });
 }
