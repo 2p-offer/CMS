@@ -16,6 +16,10 @@ public class AnalysisCommonConfig {
 
     private String excelspath;
 
+    private String jingdu;
+
+    private String weidu;
+
     public String getExcelspath() {
         return excelspath;
     }
@@ -31,5 +35,22 @@ public class AnalysisCommonConfig {
     public void setFilepath(String filepath) {
         this.filepath = filepath;
     }
+
+    public String getJingdu() {
+        return jingdu;
+    }
+
+    public void setJingdu(String jingdu) {
+        this.jingdu = jingdu;
+    }
+
+    public String getWeidu() {
+        return weidu;
+    }
+
+    public void setWeidu(String weidu) {
+        this.weidu = weidu;
+    }
 }
+
 

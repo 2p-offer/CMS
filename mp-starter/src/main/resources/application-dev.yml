@@ -17,8 +17,8 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/CMS_WY?useUnicode=true&characterEncoding=utf8
 #    url: jdbc:mysql://10.10.220.92:3306/CMS_WY?useUnicode=true&characterEncoding=utf8
     username: root
-#    password: mysql
-    password: wangyan.123
+    password: mysql
+#    password: wangyan.123
     initialSize: 1
     minIdle: 3
     maxActive: 20
@@ -62,5 +62,9 @@ spring:
         max-wait: -1
 biz:
   analysis:
-    filepath : /tmp/excels
-    excelspath : /Users/ray/Project/IdeaProjects/CMS/mp-starter/src/main/resources/
+    filepath : F:\IdeaProject\BiShe
+#    excelspath : /Users/ray/Project/IdeaProjects/CMS/mp-starter/src/main/resources/
+    excelspath : F:\IdeaProject\BiShe\CMS\mp-starter\src\main\resources\
+    jingdu: 000
+    weidu: 000
+

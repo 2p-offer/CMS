@@ -31,6 +31,12 @@ public class BiologicalArgs {
     @JSONField(name="uptime")
     private String uptime;
 
+    @JSONField(name="jingdu")
+    private String jingdu;
+
+    @JSONField(name="weidu")
+    private String weidu;
+
     public String getId() {
         return id;
     }
@@ -86,5 +92,21 @@ public class BiologicalArgs {
 
     public void setUptime(String uptime) {
         this.uptime = uptime;
+    }
+
+    public String getJingdu() {
+        return jingdu;
+    }
+
+    public void setJingdu(String jingdu) {
+        this.jingdu = jingdu;
+    }
+
+    public String getWeidu() {
+        return weidu;
+    }
+
+    public void setWeidu(String weidu) {
+        this.weidu = weidu;
     }
 }
