@@ -13,7 +13,7 @@ public interface SoilService {
     //分页查询
     public List<SoilArgs> list(Map<String, Object> map);
 
-    List<SoilArgs> listAll();
+    List<SoilArgs> listAll(Map<String, Object> map);
 
     SoilArgs get(Long id);
 

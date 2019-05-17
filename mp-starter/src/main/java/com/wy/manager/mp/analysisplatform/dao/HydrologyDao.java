@@ -18,10 +18,10 @@ import java.util.Map;
 @Mapper
 public interface HydrologyDao {
 
-    @Select("select * from aly_hydrology")
-    List<HydrologyArgs> getHydrologyAll();
+    @Select("select * from aly_hydrology where jingdu=#{jingdu} and weidu=#{weidu}")
+    List<HydrologyArgs> getHydrologyAll(Map<String, Object> map);
 
-    @Select("select * from aly_hydrology order by uptime desc  limit #{offset}, #{limit}" )
+    @Select("select * from aly_hydrology where jingdu=#{jingdu} and weidu=#{weidu} order by uptime desc  limit #{offset}, #{limit}" )
     List<HydrologyArgs> getHydrology(Map<String, Object> map);
 
     @Select("select * from aly_hydrology where uptime>#{startTime} and uptime<#{endTime}")
@@ -31,10 +31,10 @@ public interface HydrologyDao {
     @Select("select * from aly_hydrology where id=#{id}")
     HydrologyArgs getHydrologyById(String id);
 
-    @Select("select count(*) from aly_hydrology")
+    @Select("select count(*) from aly_hydrology where jingdu=#{jingdu} and weidu=#{weidu}")
     int getCount(Map<String, Object> map);
 
-    @Insert("insert into aly_hydrology(currentspeed,flowto,waterlevel,uptime) values(#{currentspeed},#{flowto},#{waterlevel},#{uptime})")
+    @Insert("insert into aly_hydrology(currentspeed,flowto,waterlevel,uptime,jingdu,weidu) values(#{currentspeed},#{flowto},#{waterlevel},#{uptime},#{jingdu},#{weidu})")
     void insertHydrology(HydrologyArgs hydrologyArgs);
 
     @Delete("delete from aly_hydrology where id=#{id}")

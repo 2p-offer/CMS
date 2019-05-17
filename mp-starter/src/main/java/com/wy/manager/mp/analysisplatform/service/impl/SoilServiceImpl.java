@@ -23,9 +23,9 @@ public class SoilServiceImpl implements SoilService {
     }
 
     @Override
-    public List<SoilArgs> listAll() {
+    public List<SoilArgs> listAll(Map<String, Object> map) {
 
-        return soilDao.getSoilAll();
+        return soilDao.getSoilAll(map);
     }
 
     @Override

@@ -24,8 +24,8 @@ public class BiologicalServiceImpl implements BiologicalService {
     }
 
     @Override
-    public List<BiologicalArgs> listAll() {
-        return biologicalDao.getBiologicalAll();
+    public List<BiologicalArgs> listAll(Map<String, Object> map) {
+        return biologicalDao.getBiologicalAll(map);
     }
 
     @Override

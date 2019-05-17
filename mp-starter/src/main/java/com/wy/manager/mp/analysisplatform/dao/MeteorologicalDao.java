@@ -18,10 +18,10 @@ import java.util.Map;
 @Mapper
 public interface MeteorologicalDao {
 
-    @Select("select * from aly_meteorological")
-    List<MeteorologicalArgs> getMeteorologicalAll();
+    @Select("select * from aly_meteorological where jingdu=#{jingdu} and weidu=#{weidu}")
+    List<MeteorologicalArgs> getMeteorologicalAll(Map<String, Object> map);
 
-    @Select("select * from aly_meteorological order by uptime desc  limit #{offset}, #{limit}" )
+    @Select("select * from aly_meteorological where jingdu=#{jingdu} and weidu=#{weidu} order by uptime desc  limit #{offset}, #{limit}" )
     List<MeteorologicalArgs> getMeteorologicall(Map<String, Object> map);
 
     @Select("select * from aly_meteorological where uptime>#{startTime} and uptime<#{endTime}")
@@ -31,10 +31,10 @@ public interface MeteorologicalDao {
     @Select("select * from aly_meteorological where id=#{id}")
     MeteorologicalArgs getMeteorologicalById(String id);
 
-    @Select("select count(*) from aly_meteorological")
+    @Select("select count(*) from aly_meteorological  where jingdu=#{jingdu} and weidu=#{weidu}")
     int getCount(Map<String, Object> map);
 
-    @Insert("insert into aly_meteorological(windspeed,airtemperature,precipitation,evaporation,radiation,uptime) values(#{windspeed},#{airtemperature},#{precipitation},#{evaporation},#{radiation},#{uptime})")
+    @Insert("insert into aly_meteorological(windspeed,airtemperature,precipitation,evaporation,radiation,uptime,jingdu,weidu) values(#{windspeed},#{airtemperature},#{precipitation},#{evaporation},#{radiation},#{uptime},#{jingdu},#{weidu})")
     void insertMeteorological(MeteorologicalArgs meteorologicalArgs);
 
     @Delete("delete from aly_meteorological where id=#{id}")

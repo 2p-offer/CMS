@@ -80,4 +80,16 @@ public class PointController {
         LOGGER.info("besurePoint:"+JSONObject.toJSONString(pointArgs));
         return "ok";
     }
+
+    @ResponseBody
+    @PostMapping("/deletePoint")
+    String deletePoint(@RequestBody PointArgs pointArgs){
+
+        LOGGER.info("besurePoint:"+JSONObject.toJSONString(pointArgs));
+        if(pointDao.remove(pointArgs)>0){
+            LOGGER.info("delect point Success："+JSONObject.toJSONString(pointArgs));
+            return "ok";
+        }
+        return "no";
+    }
 }

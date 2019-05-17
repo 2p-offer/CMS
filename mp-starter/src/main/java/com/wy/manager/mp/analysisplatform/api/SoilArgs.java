@@ -30,6 +30,12 @@ public class SoilArgs {
 
     @JSONField(name="uptime")
     private String uptime;
+
+    @JSONField(name="jingdu")
+    private String jingdu;
+
+    @JSONField(name="weidu")
+    private String weidu;
 //    //扩展字段
 //    private String ext;
 
@@ -95,5 +101,22 @@ public class SoilArgs {
 
     public void setUptime(String uptime) {
         this.uptime = uptime;
+    }
+
+    public String getJingdu() {
+
+        return jingdu;
+    }
+
+    public void setJingdu(String jingdu) {
+        this.jingdu = jingdu;
+    }
+
+    public String getWeidu() {
+        return weidu;
+    }
+
+    public void setWeidu(String weidu) {
+        this.weidu = weidu;
     }
 }

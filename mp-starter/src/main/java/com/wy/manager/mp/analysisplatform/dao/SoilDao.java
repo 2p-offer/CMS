@@ -19,19 +19,19 @@ import java.util.Map;
 public interface SoilDao {
 
 
-    @Select("select * from aly_soil order by uptime desc  limit #{offset}, #{limit}" )
+    @Select("select * from aly_soil  where jingdu=#{jingdu} and weidu=#{weidu} order by uptime desc  limit #{offset}, #{limit}" )
     List<SoilArgs> getSoil(Map<String, Object> map);
-    @Select("select * from aly_soil order by uptime desc")
-    List<SoilArgs> getSoilAll();
+    @Select("select * from aly_soil  where jingdu=#{jingdu} and weidu=#{weidu} order by uptime desc")
+    List<SoilArgs> getSoilAll(Map<String, Object> map);
 
 
     @Select("select * from aly_soil where id=#{id}")
     SoilArgs getSoilById(String id);
 
-    @Select("select count(*) from aly_soil")
+    @Select("select count(*) from aly_soil  where jingdu=#{jingdu} and weidu=#{weidu}")
     int getCount(Map<String, Object> map);
 
-    @Insert("insert into aly_soil(cnps,heavymetal,ph,saltion,watercontent,uptime) values(#{cnps},#{heavymetal},#{ph},#{saltion},#{watercontent},#{uptime})")
+    @Insert("insert into aly_soil(cnps,heavymetal,ph,saltion,watercontent,uptime,jingdu,weidu) values(#{cnps},#{heavymetal},#{ph},#{saltion},#{watercontent},#{uptime},#{jingdu},#{weidu})")
     void insertSoil(SoilArgs soilArgs);
 
     @Delete("delete from aly_soil where id=#{id}")

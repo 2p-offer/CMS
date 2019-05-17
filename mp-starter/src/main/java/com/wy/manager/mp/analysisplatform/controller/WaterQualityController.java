@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -26,6 +27,7 @@ import java.util.Map;
  * Created by 2P on 19-3-25.
  */
 @RequestMapping("/analysis/waterQuality")
+
 @Controller
 public class WaterQualityController {
 
@@ -106,6 +108,14 @@ public class WaterQualityController {
     @GetMapping("/list")
     PageUtils list(@RequestParam Map<String, Object> params) {
         // 查询列表数据
+        String jingdu = analysisConfig.getJingdu();
+        String weidu = analysisConfig.getWeidu();
+        if ("0".equals(jingdu) || "0".equals(weidu))
+        {
+            return null;
+        }
+        params.put("jingdu", jingdu);
+        params.put("weidu", weidu);
         Query query = new Query(params);
         List<WaterQualityArgs> list = waterQualityService.list(query);
         chartList = list;
@@ -124,7 +134,16 @@ public class WaterQualityController {
     List<WaterQualityArgs> showChartsData() {
         if (chartList == null) {
             LOGGER.info("charList is null");
-            chartList = waterQualityService.listAll();
+            String jingdu = analysisConfig.getJingdu();
+            String weidu = analysisConfig.getWeidu();
+            if ("000" == jingdu || "000" == weidu) {
+                return null;
+            }
+            Map<String, Object> params=new HashMap<>();
+            params.put("jingdu", jingdu);
+            params.put("weidu", weidu);
+            Query query = new Query(params);
+            chartList = waterQualityService.listAll(query);
         }
         return chartList;
     }

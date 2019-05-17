@@ -13,7 +13,7 @@ public interface MeteorologicalService {
     //分页查询
     public List<MeteorologicalArgs> list(Map<String, Object> map);
 
-    public List<MeteorologicalArgs> listAll();
+    public List<MeteorologicalArgs> listAll(Map<String, Object> map);
 
 
     MeteorologicalArgs get(Long id);

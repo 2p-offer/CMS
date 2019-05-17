@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -105,6 +106,14 @@ public class MeteorologicalController {
     @GetMapping("/list")
     PageUtils list(@RequestParam Map<String, Object> params) {
         // 查询列表数据
+        String jingdu = analysisConfig.getJingdu();
+        String weidu = analysisConfig.getWeidu();
+        if ("0".equals(jingdu) || "0".equals(weidu))
+        {
+            return null;
+        }
+        params.put("jingdu", jingdu);
+        params.put("weidu", weidu);
         Query query = new Query(params);
         List<MeteorologicalArgs> list = meteorologicalService.list(query);
         chartList = list;
@@ -122,8 +131,17 @@ public class MeteorologicalController {
     @GetMapping("/showChartsData")
     List<MeteorologicalArgs> showChartsData() {
         if (chartList == null) {
+            String jingdu = analysisConfig.getJingdu();
+            String weidu = analysisConfig.getWeidu();
+            if ("000" == jingdu || "000" == weidu) {
+                return null;
+            }
+            Map<String, Object> params=new HashMap<>();
+            params.put("jingdu", jingdu);
+            params.put("weidu", weidu);
+            Query query = new Query(params);
             LOGGER.info("charList is null");
-            chartList = meteorologicalService.listAll();
+            chartList = meteorologicalService.listAll(query);
         }
         return chartList;
     }

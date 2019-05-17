@@ -3,6 +3,7 @@ package com.wy.manager.mp.analysisplatform.service.impl;
 import com.wy.manager.mp.analysisplatform.api.*;
 import com.wy.manager.mp.analysisplatform.api.utils.DataParseUtils;
 import com.wy.manager.mp.analysisplatform.api.utils.SheetUtils;
+import com.wy.manager.mp.analysisplatform.config.AnalysisCommonConfig;
 import com.wy.manager.mp.analysisplatform.dao.*;
 import com.wy.manager.mp.analysisplatform.service.FileReceiveService;
 import org.slf4j.Logger;
@@ -32,6 +33,8 @@ public class FileReceiveServiceImpl implements FileReceiveService {
     SoilDao soilDao;
     @Autowired
     WaterQualityDao waterQualityDao;
+    @Autowired
+    AnalysisCommonConfig analysisCommonConfig;
 
     @Override
     public Object dealFile(MultipartFile file, String fileType) {
@@ -46,6 +49,8 @@ public class FileReceiveServiceImpl implements FileReceiveService {
                     strings = SheetUtils.readExcel(file);
                     List<BiologicalArgs> lists = DataParseUtils.parstToBiological(strings);
                     for (BiologicalArgs biologicalArgs : lists) {
+                        biologicalArgs.setJingdu(analysisCommonConfig.getJingdu());
+                        biologicalArgs.setWeidu(analysisCommonConfig.getWeidu());
                         biologicalDao.insertBiological(biologicalArgs);
                         LOGGER.info("insertBiological list success..");
                     }
@@ -61,6 +66,8 @@ public class FileReceiveServiceImpl implements FileReceiveService {
                     strings = SheetUtils.readExcel(file);
                     List<HydrologyArgs> lists = DataParseUtils.parstToHydrology(strings);
                     for (HydrologyArgs hydrologyArgs : lists) {
+                        hydrologyArgs.setJingdu(analysisCommonConfig.getJingdu());
+                        hydrologyArgs.setWeidu(analysisCommonConfig.getWeidu());
                         hydrologyDao.insertHydrology(hydrologyArgs);
                         LOGGER.info("inserthydrology list success..");
                     }
@@ -76,6 +83,8 @@ public class FileReceiveServiceImpl implements FileReceiveService {
                     strings=SheetUtils.readExcel(file);
                     List<MeteorologicalArgs> meteorologicalArgs = DataParseUtils.parstToMeteorological(strings);
                     for (MeteorologicalArgs meteorological : meteorologicalArgs){
+                        meteorological.setJingdu(analysisCommonConfig.getJingdu());
+                        meteorological.setWeidu(analysisCommonConfig.getWeidu());
                         meteorologicalDao.insertMeteorological(meteorological);
                     }
                 }catch (Exception e){
@@ -90,6 +99,8 @@ public class FileReceiveServiceImpl implements FileReceiveService {
                     strings=SheetUtils.readExcel(file);
                     List<SoilArgs> soilArgs = DataParseUtils.parstToSoil(strings);
                     for(SoilArgs soil : soilArgs){
+                        soil.setJingdu(analysisCommonConfig.getJingdu());
+                        soil.setWeidu(analysisCommonConfig.getWeidu());
                         soilDao.insertSoil(soil);
                     }
                 }catch (Exception e){
@@ -104,6 +115,8 @@ public class FileReceiveServiceImpl implements FileReceiveService {
                     strings=SheetUtils.readExcel(file);
                     List<WaterQualityArgs> waterQualityArgs = DataParseUtils.parstToWaterQuality(strings);
                     for (WaterQualityArgs waterQuality :waterQualityArgs){
+                        waterQuality.setJingdu(analysisCommonConfig.getJingdu());
+                        waterQuality.setWeidu(analysisCommonConfig.getWeidu());
                         waterQualityDao.insertWaterQuality(waterQuality);
                     }
                 }catch (Exception e){

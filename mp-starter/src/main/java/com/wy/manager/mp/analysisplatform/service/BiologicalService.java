@@ -15,7 +15,7 @@ public interface BiologicalService {
     //分页查询
     public List<BiologicalArgs> list(Map<String, Object> map);
 
-    public List<BiologicalArgs> listAll();
+    public List<BiologicalArgs> listAll(Map<String, Object> map);
 
 
     BiologicalArgs get(Long id);

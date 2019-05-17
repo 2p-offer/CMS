@@ -14,7 +14,7 @@ public interface HydrologyService {
     //分页查询
     public List<HydrologyArgs> list(Map<String, Object> map);
 
-    public List<HydrologyArgs> listAll();
+    public List<HydrologyArgs> listAll(Map<String, Object> map);
 
 
     HydrologyArgs get(Long id);

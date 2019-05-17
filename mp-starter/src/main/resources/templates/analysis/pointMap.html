@@ -37,8 +37,8 @@
 <div class="input-card">
     <label style="color:grey">采样点管理</label>
     <div class="input-item">
-        <input id="addMarker" type="button" class="btn" onclick="addMarker()" value="添加点标记">
-        <input id="clearMarker" type="button" class="btn" onclick="clearMarker()" value="删除点标记">
+        <input id="addMarker" type="button" class="btn" onclick="addMarker()" value="添加采样点">
+        <input id="clearMarker" type="button" class="btn" onclick="clearMarker()" value="删除采样点">
     </div>
     <div class="input-item">
         <input id="longitude" type="text" placeholder="经度值">
@@ -119,8 +119,8 @@
                     });
                     marker.on("click", function (e) {
                         var data = {};
-                        data["jingdu"] = e.lnglat.getLng();
-                        data["weidu"] = e.lnglat.getLat();
+                        data["jingdu"] = e.target.getPosition().getLng();
+                        data["weidu"] = e.target.getPosition().getLat();
                         $.ajax({
                             type: 'POST',
                             data: JSON.stringify(data),
@@ -128,7 +128,30 @@
                             contentType: "application/json;charset=UTF-8",
                             success: function (r) {
                                 if (r == "ok") {
-                                    alert("选定成功！(坐标值："+e.lnglat.getLng()+","+e.lnglat.getLat()+")");
+                                    alert("选定成功！(坐标值："+e.target.getPosition()+")");
+                                }
+                            },
+                            error:function(e){
+                                alert("error");
+                            }
+                        });
+                    });
+
+                    marker.on("rightclick", function (e) {
+                        var data = {};
+                        data["jingdu"] = e.target.getPosition().getLng();
+                        data["weidu"] = e.target.getPosition().getLat();
+                        $.ajax({
+                            type: 'POST',
+                            data: JSON.stringify(data),
+                            url: '/analysis/pointMap/deletePoint',
+                            contentType: "application/json;charset=UTF-8",
+                            success: function (r) {
+                                if (r == "ok") {
+                                    alert("删除成功："+data.jingdu+","+data.weidu);
+                                    window.location.reload();
+                                }else{
+                                    alert("不是0");
                                 }
                             },
                             error:function(e){
@@ -150,7 +173,6 @@
         var position = [];
         position.push(longitude);
         position.push(latitude);
-        alert(position);
         var data = {};
         data["jingdu"] = longitude;
         data["weidu"] = latitude;
@@ -185,6 +207,29 @@
                             }
                         });
                     });
+                    marker.on("rightclick", function (e) {
+                        var data = {};
+                        data["jingdu"] = e.target.getPosition().getLng();
+                        data["weidu"] = e.target.getPosition().getLat();
+                        $.ajax({
+                            type: 'POST',
+                            data: JSON.stringify(data),
+                            url: '/analysis/pointMap/deletePoint',
+                            contentType: "application/json;charset=UTF-8",
+                            success: function (r) {
+                                if (r == "ok") {
+                                    alert("删除成功："+data.jingdu+","+data.weidu);
+                                    window.location.reload();
+                                }else{
+                                    alert("不是0");
+                                }
+                            },
+                            error:function(e){
+                                alert("error");
+                            }
+                        });
+                    });
+
                     marker.setMap(map);
                 } else {
                     alert("添加失败");
@@ -196,11 +241,28 @@
 
     // 清除 marker
     function clearMarker() {
-
-        if (marker) {
-            marker.setMap(null);
-            marker = null;
-        }
+        var longitude = $("#longitude").val();
+        var latitude = $("#latitude").val();
+        var data = {};
+        data["jingdu"] = longitude;
+        data["weidu"] = latitude;
+        $.ajax({
+            type: 'POST',
+            data: JSON.stringify(data),
+            url: '/analysis/pointMap/deletePoint',
+            contentType: "application/json;charset=UTF-8",
+            success: function (r) {
+                if (r == "ok") {
+                    alert("删除成功："+data.jingdu+","+data.weidu);
+                    window.location.reload();
+                }else{
+                    alert("删除失败，请刷新页面、重试或者联系管理员");
+                }
+            },
+            error:function(e){
+                alert("error");
+            }
+        });
     }
 </script>
 </body>

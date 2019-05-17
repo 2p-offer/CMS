@@ -26,7 +26,7 @@ public interface PointDao {
     @Insert("insert into aly_point(jingdu,weidu) values(#{jingdu},#{weidu})")
     void insertPoint(PointArgs soilArgs);
 
-    @Delete("delete from aly_point where id=#{id}")
-    int remove(String id);
+    @Delete("delete from aly_point where jingdu=#{jingdu} and weidu=#{weidu}")
+    int remove(PointArgs soilArgs);
 
 }

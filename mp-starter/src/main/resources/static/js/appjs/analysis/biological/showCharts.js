@@ -14,6 +14,12 @@ function getdata(){
         url: prefix + "/showChartsData",
         type:"GET",
         success:function (res) {
+            console.log(res);
+            for(var k=0;k<res.length;k++){
+                delete res[k].jingdu;
+                delete res[k].weidu;
+            }
+            console.log(res);
 
             var dataFirst=res[0]
             //得到legend的数组
@@ -21,7 +27,7 @@ function getdata(){
                 dataName.push(key)
             }
             //去掉最后一个日期属性
-            dataName.pop()
+            dataName.pop();
 
             //创建每条数据的data数组
             for(var k=0;k<dataName.length;k++){

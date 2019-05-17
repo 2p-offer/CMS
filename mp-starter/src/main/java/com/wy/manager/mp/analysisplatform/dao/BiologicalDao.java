@@ -1,6 +1,7 @@
 package com.wy.manager.mp.analysisplatform.dao;
 
 import com.wy.manager.mp.analysisplatform.api.BiologicalArgs;
+import com.wy.manager.mp.analysisplatform.api.PointArgs;
 import org.apache.ibatis.annotations.*;
 import org.mapstruct.Mapper;
 import org.springframework.stereotype.Component;
@@ -15,10 +16,10 @@ import java.util.Map;
 @Mapper
 public interface BiologicalDao {
 
-    @Select("select * from aly_biological")
-    List<BiologicalArgs> getBiologicalAll();
+    @Select("select * from aly_biological where jingdu=#{jingdu} and weidu=#{weidu}")
+    List<BiologicalArgs> getBiologicalAll(Map<String, Object> map);
 
-    @Select("select * from aly_biological order by uptime desc  limit #{offset}, #{limit}" )
+    @Select("select * from aly_biological where jingdu=#{jingdu} and weidu=#{weidu}  order by uptime desc  limit #{offset}, #{limit} " )
     List<BiologicalArgs> getBiological(Map<String, Object> map);
 
     @Select("select * from aly_biological where uptime>#{startTime} and uptime<#{endTime}")
@@ -28,10 +29,10 @@ public interface BiologicalDao {
     @Select("select * from aly_biological where id=#{id}")
     BiologicalArgs getBiologicalById(String id);
 
-    @Select("select count(*) from aly_biological")
+    @Select("select count(*) from aly_biological where jingdu=#{jingdu} and weidu=#{weidu}")
     int getCount(Map<String, Object> map);
 
-    @Insert("insert into aly_biological(wetlandplants,phytoplankton,zooplankton,benthos,fish,uptime) values(#{wetlandplants},#{phytoplankton},#{zooplankton},#{benthos},#{fish},#{uptime})")
+    @Insert("insert into aly_biological(wetlandplants,phytoplankton,zooplankton,benthos,fish,uptime,jingdu,weidu) values(#{wetlandplants},#{phytoplankton},#{zooplankton},#{benthos},#{fish},#{uptime},#{jingdu},#{weidu})")
     void insertBiological(BiologicalArgs biologicalArgs);
 
     @Delete("delete from aly_biological where id=#{id}")

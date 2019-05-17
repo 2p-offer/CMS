@@ -13,7 +13,7 @@ public interface WaterQualityService {
     //分页查询
     public List<WaterQualityArgs> list(Map<String, Object> map);
 
-    public List<WaterQualityArgs> listAll();
+    public List<WaterQualityArgs> listAll(Map<String, Object> map);
 
     WaterQualityArgs get(Long id);
 

@@ -23,8 +23,8 @@ public class WaterQualityServiceImpl implements WaterQualityService {
     }
 
     @Override
-    public List<WaterQualityArgs> listAll() {
-        return waterQualityDao.getWaterQualityAll();
+    public List<WaterQualityArgs> listAll(Map<String, Object> map) {
+        return waterQualityDao.getWaterQualityAll(map);
     }
 
     @Override

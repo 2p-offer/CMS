@@ -25,6 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -76,10 +77,10 @@ public class BiologicalController {
 
 
     @GetMapping("/downLoadTmp")
-    public HttpServletResponse download(HttpServletRequest request,HttpServletResponse response) {
+    public HttpServletResponse download(HttpServletRequest request, HttpServletResponse response) {
         try {
             //TODO 文件地址
-            String path=analysisConfig.getExcelspath()+"static/excels/SWZB.xlsx";
+            String path = analysisConfig.getExcelspath() + "static/excels/SWZB.xlsx";
             // path是指欲下载的文件的路径。
             File file = new File(path);
             // 取得文件名。
@@ -112,6 +113,14 @@ public class BiologicalController {
     @GetMapping("/list")
     PageUtils list(@RequestParam Map<String, Object> params) {
         // 查询列表数据
+        String jingdu = analysisConfig.getJingdu();
+        String weidu = analysisConfig.getWeidu();
+        if ("0".equals(jingdu) || "0".equals(weidu))
+        {
+            return null;
+        }
+        params.put("jingdu", jingdu);
+        params.put("weidu", weidu);
         Query query = new Query(params);
         List<BiologicalArgs> list = biologicalService.list(query);
         chartList = list;
@@ -129,8 +138,17 @@ public class BiologicalController {
     @GetMapping("/showChartsData")
     List<BiologicalArgs> showChartsData() {
         if (chartList == null) {
+            String jingdu = analysisConfig.getJingdu();
+            String weidu = analysisConfig.getWeidu();
+            if ("000" == jingdu || "000" == weidu) {
+                return null;
+            }
+            Map<String, Object> params=new HashMap<>();
+            params.put("jingdu", jingdu);
+            params.put("weidu", weidu);
+            Query query = new Query(params);
             LOGGER.info("charList is null");
-            chartList = biologicalService.listAll();
+            chartList = biologicalService.listAll(query);
         }
         return chartList;
     }

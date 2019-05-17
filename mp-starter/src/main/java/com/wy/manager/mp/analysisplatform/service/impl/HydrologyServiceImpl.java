@@ -24,8 +24,8 @@ public class HydrologyServiceImpl implements HydrologyService {
     }
 
     @Override
-    public List<HydrologyArgs> listAll() {
-        return null;
+    public List<HydrologyArgs> listAll(Map<String, Object> map) {
+        return hydrologyDao.getHydrologyAll(map);
     }
 
     @Override

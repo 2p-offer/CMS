@@ -24,8 +24,8 @@ public class MeteorologicalServiceImpl implements MeteorologicalService {
     }
 
     @Override
-    public List<MeteorologicalArgs> listAll() {
-        return meteorologicalDao.getMeteorologicalAll();
+    public List<MeteorologicalArgs> listAll(Map<String, Object> map) {
+        return meteorologicalDao.getMeteorologicalAll(map);
     }
 
     @Override
