@@ -14,6 +14,10 @@ function getdata(){
         url: prefix + "/showChartsData",
         type:"GET",
         success:function (res) {
+            for(var k=0;k<res.length;k++){
+                delete res[k].jingdu;
+                delete res[k].weidu;
+            }
 
             var dataFirst=res[0]
             //得到legend的数组

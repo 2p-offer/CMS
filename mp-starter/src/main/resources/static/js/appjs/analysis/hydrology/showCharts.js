@@ -14,7 +14,12 @@ function getdata(){
         url: prefix + "/showChartsData",
         type:"GET",
         success:function (res) {
-
+            console.log("old"+res);
+            for(var k=0;k<res.length;k++){
+                delete res[k].jingdu;
+                delete res[k].weidu;
+            }
+            console.log("new"+res);
             var dataFirst=res[0]
             //得到legend的数组
             for(var key in dataFirst){
@@ -42,12 +47,12 @@ function getdata(){
                     objValEqus(res[i],res[i+1]);
                 }
             }
-            console.log(xData)
+            console.log("xdata"+xData);
             var theStr;
             for(var i=0;i<dataName.length;i++){
                 theStr='{"name":'+'"'+dataName[i]+'"'+","+'"type":"line",'+'"data":'+"["+str[i]+"]}";
-                console.log(theStr)
-                data.push(JSON.parse(theStr))
+                console.log("theStr"+theStr);
+                data.push(JSON.parse(theStr));
                 console.log(data)
             }
             var mychart=echarts.init(document.getElementById("charts"));

@@ -14,19 +14,24 @@ function getdata(){
         url: prefix + "/showChartsData",
         type:"GET",
         success:function (res) {
-
-            var dataFirst=res[0]
+            console.log("old"+res);
+            for(var k=0;k<res.length;k++){
+                delete res[k].jingdu;
+                delete res[k].weidu;
+            }
+            console.log("new"+res);
+            var dataFirst=res[0];
             //得到legend的数组
             for(var key in dataFirst){
-                dataName.push(key)
+                dataName.push(key);
             }
             //去掉最后一个日期属性
-            dataName.pop()
+            dataName.pop();
 
             //创建每条数据的data数组
             for(var k=0;k<dataName.length;k++){
                 str[k]=new Array();
-                str.push(str[k])
+                str.push(str[k]);
             }
 //               console.log(dataName)
             //得到x轴数据
@@ -42,13 +47,13 @@ function getdata(){
                     objValEqus(res[i],res[i+1]);
                 }
             }
-            console.log(xData)
+            console.log("xData:"+xData);
             var theStr;
             for(var i=0;i<dataName.length;i++){
                 theStr='{"name":'+'"'+dataName[i]+'"'+","+'"type":"line",'+'"data":'+"["+str[i]+"]}";
-                console.log(theStr)
-                data.push(JSON.parse(theStr))
-                console.log(data)
+                console.log("theStr"+theStr);
+                data.push(JSON.parse(theStr));
+                console.log(data);
             }
             var mychart=echarts.init(document.getElementById("charts"));
             mychart.setOption(option,xData,dataName,data);
