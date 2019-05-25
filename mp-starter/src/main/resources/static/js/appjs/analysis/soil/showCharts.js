@@ -49,8 +49,9 @@ function getdata(){
             console.log(xData)
             var theStr;
             for(var i=0;i<dataName.length;i++){
+
                 theStr='{"name":'+'"'+dataName[i]+'"'+","+'"type":"line",'+'"data":'+"["+str[i]+"]}";
-                console.log(theStr)
+                console.log("theStr::"+theStr)
                 data.push(JSON.parse(theStr))
                 console.log(data)
             }
@@ -156,6 +157,10 @@ function objValEqu(a,b) {
     for(var i=0;i<aprop.length;i++){
         if(aprop[i]==bprop[i]){
 //             str[i]=new Array();
+            console.log("a[[]]:"+a[aprop[i]]);
+            if(a[aprop[i]]==null||a[aprop[i]]==''){
+                a[aprop[i]]=0;
+            }
             str[i].push(a[aprop[i]]);
         }
 

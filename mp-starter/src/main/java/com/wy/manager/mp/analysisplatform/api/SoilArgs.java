@@ -12,9 +12,14 @@ public class SoilArgs {
     @JSONField(name="id")
     private String id;
 
-    //碳氮硫磷
-    @JSONField(name="cnps")
-    private String cnps;
+    @JSONField(name="c")
+    private String c;
+    @JSONField(name="n")
+    private String n;
+    @JSONField(name="s")
+    private String s;
+    @JSONField(name="p")
+    private String p;
     //重金属
     @JSONField(name="heavymetal")
     private String heavymetal;
@@ -47,12 +52,37 @@ public class SoilArgs {
         this.id = id;
     }
 
-    public String getCnps() {
-        return cnps;
+
+    public String getC() {
+        return c;
     }
 
-    public void setCnps(String cnps) {
-        this.cnps = cnps;
+    public void setC(String c) {
+        this.c = c;
+    }
+
+    public String getN() {
+        return n;
+    }
+
+    public void setN(String n) {
+        this.n = n;
+    }
+
+    public String getS() {
+        return s;
+    }
+
+    public void setS(String s) {
+        this.s = s;
+    }
+
+    public String getP() {
+        return p;
+    }
+
+    public void setP(String p) {
+        this.p = p;
     }
 
     public String getHeavymetal() {

@@ -71,12 +71,15 @@ public class DataParseUtils {
         }
         for (String[] strings : lists) {
             SoilArgs tmp = new SoilArgs();
-            tmp.setCnps(strings[0]);
-            tmp.setHeavymetal(strings[1]);
-            tmp.setPh(strings[2]);
-            tmp.setSaltion(strings[3]);
-            tmp.setWatercontent(strings[4]);
-            tmp.setUptime(strings[5]);
+            tmp.setC(strings[0]);
+            tmp.setN(strings[1]);
+            tmp.setS(strings[2]);
+            tmp.setP(strings[3]);
+            tmp.setHeavymetal(strings[4]);
+            tmp.setPh(strings[5]);
+            tmp.setSaltion(strings[6]);
+            tmp.setWatercontent(strings[7]);
+            tmp.setUptime(strings[8]);
             res.add(tmp);
         }
         return res;

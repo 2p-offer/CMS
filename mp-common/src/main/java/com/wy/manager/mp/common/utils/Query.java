@@ -20,12 +20,13 @@ public class Query extends LinkedHashMap<String, Object> {
         // 分页参数
         this.offset = Integer.parseInt(params.get("offset").toString());
         this.limit = Integer.parseInt(params.get("limit").toString());
-        this.jingdu = params.get("jingdu").toString();
-        this.weidu = params.get("weidu").toString();
         this.put("offset", offset);
         this.put("page", offset / limit + 1);
         this.put("limit", limit);
-        if (jingdu != null && weidu != null) {
+        if (params.get("jingdu") != null && params.get("weidu") != null) {
+            this.jingdu=params.get("jingdu").toString();
+            this.weidu=params.get("weidu").toString();
+
             this.put("jingdu", jingdu);
             this.put("weidu", weidu);
         }

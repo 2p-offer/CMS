@@ -51,8 +51,23 @@ function load() {
                         title : '序号' // 列标题
                     },
                     {
-                        field : 'cnps',
-                        title : '碳氮硫磷'
+                        field : 'c',
+                        title : '碳'
+                    }
+                    ,
+                    {
+                        field : 'n',
+                        title : '氮'
+                    }
+                    ,
+                    {
+                        field : 's',
+                        title : '硫'
+                    }
+                    ,
+                    {
+                        field : 'p',
+                        title : '磷'
                     },
                     {
                         field : 'heavymetal',

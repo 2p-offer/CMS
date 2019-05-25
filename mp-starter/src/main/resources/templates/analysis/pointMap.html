@@ -51,7 +51,13 @@
     var map = new AMap.Map("container", {
         resizeEnable: true,
         center: [118.570454,37.689618],
-        zoom: 9
+        zoom: 9,
+        layers:[
+            new AMap.TileLayer.RoadNet({
+                //rejectMapMask:true
+            }),
+            new AMap.TileLayer.Satellite()
+        ]
     });
     // $(function () {
     //     $.ajax({

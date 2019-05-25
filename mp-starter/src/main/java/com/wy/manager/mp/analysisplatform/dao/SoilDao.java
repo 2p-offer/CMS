@@ -31,7 +31,7 @@ public interface SoilDao {
     @Select("select count(*) from aly_soil  where jingdu=#{jingdu} and weidu=#{weidu}")
     int getCount(Map<String, Object> map);
 
-    @Insert("insert into aly_soil(cnps,heavymetal,ph,saltion,watercontent,uptime,jingdu,weidu) values(#{cnps},#{heavymetal},#{ph},#{saltion},#{watercontent},#{uptime},#{jingdu},#{weidu})")
+    @Insert("insert into aly_soil(c,n,s,p,heavymetal,ph,saltion,watercontent,uptime,jingdu,weidu) values(#{c},#{n},#{s},#{p},#{heavymetal},#{ph},#{saltion},#{watercontent},#{uptime},#{jingdu},#{weidu})")
     void insertSoil(SoilArgs soilArgs);
 
     @Delete("delete from aly_soil where id=#{id}")

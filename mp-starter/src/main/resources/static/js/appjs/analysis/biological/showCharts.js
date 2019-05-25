@@ -155,7 +155,9 @@ function objValEqu(a,b) {
     //将属性名相同的属性值放入同一数组
     for(var i=0;i<aprop.length;i++){
         if(aprop[i]==bprop[i]){
-//             str[i]=new Array();
+            if(a[aprop[i]]==null||a[aprop[i]]==''){
+                a[aprop[i]]=0;
+            }
             str[i].push(a[aprop[i]]);
         }
 
