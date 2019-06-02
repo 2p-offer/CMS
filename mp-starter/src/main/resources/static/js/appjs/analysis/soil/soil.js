@@ -70,20 +70,124 @@ function load() {
                         title : '磷'
                     },
                     {
-                        field : 'heavymetal',
-                        title : '重金属'
-                    },
-                    {
                         field : 'ph',
                         title : 'PH'
                     },
                     {
-                        field : 'saltion',
-                        title : '盐离子'
-                    },
-                    {
                         field : 'watercontent',
                         title : '含水量'
+                    },
+                    {
+                        field : 'deep',
+                        title : '采样点深度'
+                    },
+                    {
+                        field : 'k',
+                        title : '钾离子'
+                    },
+                    {
+                        field : 'ca',
+                        title : '钙离子'
+                    },
+                    {
+                        field : 'na',
+                        title : '钠离子'
+                    },
+                    {
+                        field : 'mg',
+                        title : '镁离子'
+                    },
+                    {
+                        field : 'cl',
+                        title : '氯离子'
+                    },
+                    {
+                        field : 'so4',
+                        title : '硫酸根离子'
+                    },
+                    {
+                        field : 'no3',
+                        title : '硝酸根离子'
+                    },
+                    {
+                        field : 'co3',
+                        title : '碳酸根离子'
+                    },
+                    {
+                        field : 'conductivity',
+                        title : '电导率'
+                    },
+                    {
+                        field : 'som',
+                        title : 'som'
+                    },
+                    {
+                        field : 'pom',
+                        title : 'pom'
+                    },
+                    {
+                        field : 'doc',
+                        title : 'doc'
+                    },
+                    {
+                        field : 'shen',
+                        title : '砷'
+                    },
+                    {
+                        field : 'ge2',
+                        title : '镉'
+                    },
+                    {
+                        field : 'tong',
+                        title : '铜'
+                    },
+                    {
+                        field : 'qian',
+                        title : '铅'
+                    },
+                    {
+                        field : 'xin',
+                        title : '锌'
+                    },
+                    {
+                        field : 'nie',
+                        title : '镍'
+                    },
+                    {
+                        field : 'ge4',
+                        title : '铬'
+                    },
+                    {
+                        field : 'gai',
+                        title : '钙'
+                    },
+                    {
+                        field : 'mei',
+                        title : '镁'
+                    },
+                    {
+                        field : 'tie',
+                        title : '铁'
+                    },
+                    {
+                        field : 'lv',
+                        title : '铝'
+                    },
+                    {
+                        field : 'quandan',
+                        title : '全氮'
+                    },
+                    {
+                        field : 'quanlin',
+                        title : '全磷'
+                    },
+                    {
+                        field : 'quanliu',
+                        title : '全硫'
+                    },
+                    {
+                        field : 'warning',
+                        title : '预警值'
                     },
                     {
                         field : 'uptime',

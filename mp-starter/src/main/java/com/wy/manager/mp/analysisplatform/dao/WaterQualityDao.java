@@ -29,7 +29,7 @@ public interface WaterQualityDao {
 
     @Select("select count(*) from aly_waterquality where jingdu=#{jingdu} and weidu=#{weidu}")
     int getCount(Map<String, Object> map);
-    @Insert("insert into aly_waterquality(ph,dissolvedoxygen,conductivity,turbidity,temperature,salinity,ammonianitrogen,totalphosphorus,totalnitrogen,kmno4,uptime,jingdu,weidu) values(#{ph},#{dissolvedoxygen},#{conductivity},#{turbidity},#{temperature},#{salinity},#{ammonianitrogen},#{totalphosphorus},#{totalnitrogen},#{kmno4},#{uptime},#{jingdu},#{weidu})")
+    @Insert("insert into aly_waterquality(ph,dissolvedoxygen,conductivity,turbidity,temperature,salinity,ammonianitrogen,totalphosphorus,totalnitrogen,kmno4,k,ca,na,mg,cl,so4,no3,co3,doc,shen,ge2,tong,qian,xin,nie,ge4,gai,mei,tie,lv,quandan,quanlin,quanliu,uptime,jingdu,weidu,warning) values(#{ph},#{dissolvedoxygen},#{conductivity},#{turbidity},#{temperature},#{salinity},#{ammonianitrogen},#{totalphosphorus},#{totalnitrogen},#{kmno4},#{k},#{ca},#{na},#{mg},#{cl},#{so4},#{no3},#{co3},#{doc},#{shen},#{ge2},#{tong},#{qian},#{xin},#{nie},#{ge4},#{gai},#{mei},#{tie},#{lv},#{quandan},#{quanlin},#{quanliu},#{uptime},#{jingdu},#{weidu},#{warning})")
     void insertWaterQuality(WaterQualityArgs waterQualityArgs);
 
     @Delete("delete from aly_waterquality where id=#{id}")

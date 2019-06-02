@@ -59,8 +59,16 @@ function load() {
                         title : '流向'
                     },
                     {
-                        field : 'waterlevel',
-                        title : '水位'
+                        field : 'flow',
+                        title : '流量'
+                    },
+                    {
+                        field : 'uplevel',
+                        title : '地表水水位'
+                    },
+                    {
+                        field : 'downlevel',
+                        title : '地下水水位'
                     },
                     {
                         field : 'uptime',

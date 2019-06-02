@@ -25,13 +25,14 @@ public interface SoilDao {
     List<SoilArgs> getSoilAll(Map<String, Object> map);
 
 
+
     @Select("select * from aly_soil where id=#{id}")
     SoilArgs getSoilById(String id);
 
     @Select("select count(*) from aly_soil  where jingdu=#{jingdu} and weidu=#{weidu}")
     int getCount(Map<String, Object> map);
 
-    @Insert("insert into aly_soil(c,n,s,p,heavymetal,ph,saltion,watercontent,uptime,jingdu,weidu) values(#{c},#{n},#{s},#{p},#{heavymetal},#{ph},#{saltion},#{watercontent},#{uptime},#{jingdu},#{weidu})")
+    @Insert("insert into aly_soil(c,n,s,p,ph,watercontent,deep,som,pom,k,ca,na,mg,cl,so4,no3,co3,conductivity,doc,shen,ge2,tong,qian,xin,nie,ge4,gai,mei,tie,lv,quandan,quanlin,quanliu,uptime,jingdu,weidu,warning) values(#{c},#{n},#{s},#{p},#{ph},#{watercontent},#{deep},#{som},#{pom},#{k},#{ca},#{na},#{mg},#{cl},#{so4},#{no3},#{co3},#{conductivity},#{doc},#{shen},#{ge2},#{tong},#{qian},#{xin},#{nie},#{ge4},#{gai},#{mei},#{tie},#{lv},#{quandan},#{quanlin},#{quanliu},#{uptime},#{jingdu},#{weidu},#{warning})")
     void insertSoil(SoilArgs soilArgs);
 
     @Delete("delete from aly_soil where id=#{id}")

@@ -13,13 +13,20 @@ public class HydrologyArgs {
     //流速
     @JSONField(name="currentspeed")
     private String currentspeed ;
+    @JSONField(name="flow")
+    private String flow ;
     //流向
     @JSONField(name="flowto")
     private String flowto ;
     //水位
-    @JSONField(name="waterlevel")
-    private String waterlevel ;
+    @JSONField(name="uplevel")
+    private String uplevel ;
+    @JSONField(name="downlevel")
+    private String downlevel ;
 
+
+    @JSONField(name="warning")
+    private String warning;
     @JSONField(name="uptime")
     private String uptime;
 
@@ -52,12 +59,36 @@ public class HydrologyArgs {
         this.flowto = flowto;
     }
 
-    public String getWaterlevel() {
-        return waterlevel;
+    public String getFlow() {
+        return flow;
     }
 
-    public void setWaterlevel(String waterlevel) {
-        this.waterlevel = waterlevel;
+    public void setFlow(String flow) {
+        this.flow = flow;
+    }
+
+    public String getUplevel() {
+        return uplevel;
+    }
+
+    public void setUplevel(String uplevel) {
+        this.uplevel = uplevel;
+    }
+
+    public String getDownlevel() {
+        return downlevel;
+    }
+
+    public void setDownlevel(String downlevel) {
+        this.downlevel = downlevel;
+    }
+
+    public String getWarning() {
+        return warning;
+    }
+
+    public void setWarning(String warning) {
+        this.warning = warning;
     }
 
     public String getUptime() {

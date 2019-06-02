@@ -17,6 +17,7 @@ function getdata(){
             for(var k=0;k<res.length;k++){
                 delete res[k].jingdu;
                 delete res[k].weidu;
+                delete res[k].warning;
             }
 
             var dataFirst=res[0]

@@ -27,14 +27,13 @@ public interface HydrologyDao {
     @Select("select * from aly_hydrology where uptime>#{startTime} and uptime<#{endTime}")
     List<HydrologyArgs> getHydrologyByTime(String startTime, String endTime);
 
-
     @Select("select * from aly_hydrology where id=#{id}")
     HydrologyArgs getHydrologyById(String id);
 
     @Select("select count(*) from aly_hydrology where jingdu=#{jingdu} and weidu=#{weidu}")
     int getCount(Map<String, Object> map);
 
-    @Insert("insert into aly_hydrology(currentspeed,flowto,waterlevel,uptime,jingdu,weidu) values(#{currentspeed},#{flowto},#{waterlevel},#{uptime},#{jingdu},#{weidu})")
+    @Insert("insert into aly_hydrology(currentspeed,flowto,flow,uplevel,downlevel,warning,uptime,jingdu,weidu) values(#{currentspeed},#{flowto},#{flow},#{uplevel},#{downlevel},#{warning},#{uptime},#{jingdu},#{weidu})")
     void insertHydrology(HydrologyArgs hydrologyArgs);
 
     @Delete("delete from aly_hydrology where id=#{id}")
