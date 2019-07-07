@@ -9,7 +9,7 @@ function load() {
             {
                 method: 'get', // 服务器数据的请求方式 get or post
                 url: prefix + "/list", // 服务器数据的加载地址
-                // showRefresh : true,
+                showRefresh : true,
                 // showToggle : true,
                 // showColumns : true,
                 iconSize: 'outline',
@@ -32,8 +32,7 @@ function load() {
                     return {
                         // 说明：传入后台的参数包括offset开始索引，limit步长，sort排序列，order：desc或者,以及所有列的键值对
                         limit: params.limit,
-                        offset: params.offset,
-                        name: $('#searchName').val()
+                        offset: params.offset
                     };
                 },
                 showExport: true,  //是否显示导出按钮
@@ -42,9 +41,9 @@ function load() {
                 Icons:'glyphicon-export',
                 exportOptions:{
                     ignoreColumn: [0,1],  //忽略某一列的索引
-                    fileName: '导出表',  //文件名称设置
+                    fileName: '生物指标',  //文件名称设置
                     worksheetName: 'sheet1',  //表格工作区名称
-                    tableName: '导出表',
+                    tableName: '生物指标',
                     excelstyles: ['background-color', 'color', 'font-size', 'font-weight']
                 },
                 // //请求服务器数据时，你可以通过重写参数的方式添加一些额外的参数，例如 toolbar 中的参数 如果

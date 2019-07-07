@@ -22,7 +22,7 @@
 <div class="wrapper wrapper-content ">
     <div class="row">
         <div class="col-sm-12">
-            <div class="ibox">
+            <div class="ibox">+
                 <div class="ibox-body">
                     <div class="fixed-table-toolbar">
                         <div class="columns pull-left">
@@ -53,6 +53,8 @@
                             <a href="/analysis/waterQuality/downLoadTmp" download="download">..下载上传模板</a>
                         </div>
                     </div>
+                    <div id="toolbar" role="group">
+                    </div>
                     <table id="exampleTable" data-mobile-responsive="true">
                     </table>
                 </div>
@@ -72,6 +74,18 @@
     </div>
 </div>
 <div th:include="include :: footer"></div>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+
+<script type="text/javascript" src="/js/plugins/bootstrap-table/export/bootstrap-table-export.js"></script>
+
+<script type="text/javascript" src="/js/plugins/bootstrap-table/export/FileSaver.js"></script>
+
+<script type="text/javascript" src="/js/plugins/bootstrap-table/export/tableExport.min.js"></script>
+
+<script type="text/javascript" src="/js/plugins/bootstrap-table/export/xlsx.core.min.js"></script>
+
 <script type="text/javascript" src="/js/appjs/analysis/waterQuality/waterQuality.js"></script>
 </body>
 </html>
